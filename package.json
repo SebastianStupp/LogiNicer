@@ -48,5 +48,8 @@
     "latest": "^0.2.0",
     "mongodb": "^3.5.5"
   },
-  "proxy": "http://localhost:8080"
+  "cacheDirectories": [
+    "client/node_modules",
+    "node_modules"
+  ]
 }

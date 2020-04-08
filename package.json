@@ -5,7 +5,7 @@
   "scripts": {
     "client": "cd client && npm start",
     "heroku-prebuild": "cd client && npm i",
-    "build": "cd client && npm run build && build-storybook",
+    "build": "cd client && npm run build && npm build-storybook",
     "storybook": "cd client && npm run storybook",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\" \"npm run storybook\"",
     "dev:server": "npm run build && cd .. && npm start",

@@ -8,7 +8,6 @@
     "build": "cd client && npm run build && npm run build-storybook",
     "storybook": "cd client && npm run storybook",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\" \"npm run storybook\"",
-    "dev:server": "npm run build && cd .. && npm start",
     "server": "nodemon index.js",
     "start": "node index.js"
   },
@@ -17,7 +16,7 @@
     "url": "git+https://github.com/SebastianStupp/LogiNicer.git"
   },
   "author": "Sebastian Stupp",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/SebastianStupp/LogiNicer/issues"
   },
@@ -42,10 +41,8 @@
     "*.{js,jsx,ts,tsx,md,html,css}": "prettier --write"
   },
   "dependencies": {
-    "add": "^2.0.6",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "latest": "^0.2.0",
     "mongodb": "^3.5.5"
   },
   "cacheDirectories": [

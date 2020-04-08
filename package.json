@@ -1,10 +1,11 @@
 {
   "name": "loginicer",
   "version": "1.0.0",
-  "privat": "true",
+  "private": true,
   "scripts": {
     "client": "cd client && npm start",
-    "build": "cd client && npm run build && build-storybook",
+    "heroku-prebuild": "cd client && npm i",
+    "build": "cd client && npm run build && npm run build-storybook",
     "storybook": "cd client && npm run storybook",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\" \"npm run storybook\"",
     "dev:server": "npm run build && cd .. && npm start",
@@ -27,7 +28,6 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.19.0",
     "husky": "^4.2.3",
-    "kind-of": "^6.0.3",
     "lint-staged": "^10.1.2",
     "nodemon": "^2.0.2",
     "prettier": "^2.0.4"
@@ -48,5 +48,8 @@
     "latest": "^0.2.0",
     "mongodb": "^3.5.5"
   },
-  "proxy": "http://localhost:8080"
+  "cacheDirectories": [
+    "client/node_modules",
+    "node_modules"
+  ]
 }

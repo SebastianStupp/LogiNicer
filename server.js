@@ -12,11 +12,14 @@ app.get('*', (request, response) => {
   response.sendFile(path.join(__dirname, 'client/build/index.html'));
 });
 
-mongoose.connect(
-  process.env.DB_CONNECTION,
-  { useNewUrlParser: true, useUnifiedTopology: true },
-  () => console.log('Test')
-);
+mongoose.connect(process.env.DB_CONNECTION, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+mongoose.connection.on('connected', () => {
+  console.log('Connected');
+});
 
 app.listen(port, () => {
   console.log(`Server is running http://localhost:${port}`);

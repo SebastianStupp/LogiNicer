@@ -12,13 +12,13 @@ const Header = styled.div`
   margin-top: 10px;
   margin-bottom: 20px;
   top: 0;
-  border-bottom: 2.5px solid #707070;
+  border-bottom: 2.5px solid ${(props) => props.theme.colors.tertiary};
   max-height: 150px;
 `;
 
 const HeaderTitle = styled.h2`
-  color: #fff6d6;
-  font-size: 1.5 rem;
+  color: ${(props) => props.theme.colors.secondary};
+  font-size: 1.2 rem;
 `;
 
 const HeaderImg = styled.img``;

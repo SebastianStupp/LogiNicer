@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 const Dropdown = styled.select`
-  background-color: #fff6d6;
+  background-color: ${(props) => props.theme.colors.secondary};
   border-radius: 3px;
   min-width: 254px;
   min-height: 34px;

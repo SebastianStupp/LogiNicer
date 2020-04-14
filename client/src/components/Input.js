@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 const Input = styled.input`
-  background-color: #fff6d6;
+  background-color: ${(props) => props.theme.colors.secondary};
   border-radius: 3px;
 `;
 

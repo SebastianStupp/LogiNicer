@@ -9,7 +9,6 @@ const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background-color: #0d3955;
   margin-top: 10px;
   margin-bottom: 20px;
   top: 0;

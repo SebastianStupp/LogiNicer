@@ -10,9 +10,10 @@ const Header = styled.div`
   align-items: center;
   justify-content: space-around;
   background-color: #0d3955;
+  margin-top: 10px;
+  margin-bottom: 20px;
   top: 0;
-  border-bottom: 2px;
-  border-color: #707070;
+  border-bottom: 2.5px solid #707070;
   max-height: 150px;
 `;
 

@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const MenuButton = styled.button`
   background-color: rgb(219, 143, 0);
-  width: 90%;
+  width: 100%;
   max-width: 500px;
   height: 30%;
   font-size: 2rem;
@@ -15,7 +15,7 @@ export const MenuButton = styled.button`
 
 export const MenuButtonTransparent = styled.button`
   background-color: rgb(219, 143, 0, 63%);
-  width: 90%;
+  width: 100%;
   max-width: 500px;
   height: 30%;
   font-size: 2rem;

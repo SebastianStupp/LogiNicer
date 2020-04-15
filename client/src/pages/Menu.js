@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 import React from 'react';
-import Header from './Header';
-import AppContainer from './AppContainer';
-import { MenuButton, MenuButtonTransparent } from './MenuButtons';
+import Header from '../components/Header';
+import AppContainer from '../components/AppContainer';
+import { MenuButton, MenuButtonTransparent } from '../components/MenuButtons';
 
 const MenuContainer = styled.div`
   width: 100%;

@@ -1,5 +1,5 @@
 import React from 'react';
-import DefaultMenu from '../components/Menu';
+import DefaultMenu from '../pages/Menu';
 
 export default {
   title: 'Pages',

@@ -6,7 +6,7 @@ export const MenuButton = styled.button`
   max-width: 500px;
   height: 30%;
   font-size: 2rem;
-  color: #0d3955;
+  color: ${(props) => props.theme.colors.textprimary};
   padding: 0px;
   border: 0;
   font-family: 'Roboto', sans-serif;
@@ -19,7 +19,7 @@ export const MenuButtonTransparent = styled.button`
   max-width: 500px;
   height: 30%;
   font-size: 2rem;
-  color: #0d3955;
+  color: ${(props) => props.theme.colors.textprimary};
   padding: 0px;
   border: 0;
 `;

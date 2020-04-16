@@ -8,6 +8,12 @@ const Dropdown = styled.select`
   min-height: 34px;
 `;
 
+const options = ['Example One', 'Example Two', 'Example Three', 'Example Four'];
+
+const CreateOptions = () => {
+  return options.map((options) => <option key={options}>{options}</option>);
+};
+
 export default function DefaultDropdown() {
   const [dropdownValue, setdropdownValue] = React.useState('');
 
@@ -20,10 +26,7 @@ export default function DefaultDropdown() {
       <option value="" defaultValue disabled>
         Choose Example
       </option>
-      <option value="Example One">Example One</option>
-      <option value="Example Two">Example Two</option>
-      <option value="Example Three">Example Three</option>
-      <option value="Example Four">Example Four</option>
+      <CreateOptions></CreateOptions>
     </Dropdown>
   );
 }

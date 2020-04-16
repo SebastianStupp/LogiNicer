@@ -17,7 +17,7 @@ export default function DefaultDropdown() {
 
   return (
     <Dropdown value={dropdownValue} onChange={handleChange}>
-      <option value="" selected disabled hidden>
+      <option value="" defaultValue disabled>
         Choose Example
       </option>
       <option value="Example One">Example One</option>

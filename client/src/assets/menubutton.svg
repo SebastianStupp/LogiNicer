@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="36" viewBox="0 0 48 36">
+  <g id="hamburger_button" data-name="hamburger button" transform="translate(0 3.5)">
+    <line id="Line_5" data-name="Line 5" x2="48" fill="none" stroke="#db8f00" stroke-width="7"/>
+    <line id="Line_6" data-name="Line 6" x2="48" transform="translate(0 14.5)" fill="none" stroke="#db8f00" stroke-width="7"/>
+    <line id="Line_7" data-name="Line 7" x2="48" transform="translate(0 29)" fill="none" stroke="#db8f00" stroke-width="7"/>
+  </g>
+</svg>

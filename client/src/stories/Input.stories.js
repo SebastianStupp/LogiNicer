@@ -6,4 +6,6 @@ export default {
   title: 'Input',
 };
 
-export const DefaultInput = () => <Input onChange={action('Change')}></Input>;
+export const DefaultInput = () => (
+  <Input onChange={action('Change')} placeholder="Example"></Input>
+);

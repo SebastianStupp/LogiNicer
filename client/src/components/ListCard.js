@@ -9,10 +9,8 @@ const ListCardContainer = styled.div`
   background-color: ${(props) => props.theme.colors.primary};
   width: 100%;
   max-width: 500px;
-  height: 20vh;
-  max-height: 150px;
+  max-height: 200px;
   color: ${(props) => props.theme.colors.textprimary};
-  padding: 0px;
   border: 1px solid black;
 `;
 
@@ -33,14 +31,16 @@ const ListSymbolContainer = styled.div`
   justify-content: space-around;
 `;
 
-const ListSymbolImage = styled.img``;
+const ListSymbolImage = styled.img`
+  padding: 8px;
+`;
 
-const ListExampleContent = ['ClientNameOne', 'ClientNameTwo'];
+const listExampleContent = ['ClientNameOne', 'ClientNameTwo'];
 
 const CreateListExampleContent = () => {
-  return ListExampleContent.map((Content) => (
-    <ListCardContainer key={Content}>
-      <ListCardContent>{Content}</ListCardContent>
+  return listExampleContent.map((content) => (
+    <ListCardContainer key={content}>
+      <ListCardContent>{content}</ListCardContent>
       <ListSymbolContainer>
         <ListSymbolImage
           src={Edit}

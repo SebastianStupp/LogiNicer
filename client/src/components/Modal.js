@@ -5,8 +5,8 @@ import Close from '../assets/close.svg';
 
 const CloseImage = styled.img`
   align-self: flex-end;
-  margin-top: 8px;
-  margin-right: 8px;
+  padding-top: 8px;
+  padding-right: 8px;
 `;
 
 const CloseButton = styled(Button)`
@@ -48,11 +48,7 @@ export default function DefaultModal() {
   const [showModal, setShowModal] = React.useState(false);
 
   const handleOnClick = () => {
-    if (!showModal) {
-      setShowModal(true);
-    } else {
-      setShowModal(false);
-    }
+    setShowModal(!showModal);
   };
 
   return (

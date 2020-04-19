@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import PropTypes from 'prop-types';
 import Edit from '../assets/edit.svg';
 import Delete from '../assets/delete.svg';
 import { action } from '@storybook/addon-actions';
@@ -65,7 +64,3 @@ export default function DefaultListCard() {
     </>
   );
 }
-
-DefaultListCard.propTypes = {
-  type: PropTypes.string,
-};

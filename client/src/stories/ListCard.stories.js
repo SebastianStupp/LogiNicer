@@ -1,7 +1,7 @@
 import React from 'react';
-import DefaultListCard from '../components/ListCard';
+import ListCard from '../components/ListCard';
 export default {
   title: 'ListCard',
 };
 
-export const ListCard = () => <DefaultListCard></DefaultListCard>;
+export const DefaultListCard = () => <ListCard></ListCard>;

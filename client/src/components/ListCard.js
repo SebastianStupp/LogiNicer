@@ -57,7 +57,7 @@ const CreateListExampleContent = () => {
   ));
 };
 
-export default function DefaultListCard() {
+export default function ListCard() {
   return (
     <>
       <CreateListExampleContent></CreateListExampleContent>

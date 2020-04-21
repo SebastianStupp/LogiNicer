@@ -22,7 +22,9 @@ const HeaderTitle = styled.h2`
   font-size: 1.2 rem;
 `;
 
-const HeaderImg = styled.img``;
+const HeaderImg = styled.img`
+  cursor: pointer;
+`;
 
 const headerButtons = {
   menu: {

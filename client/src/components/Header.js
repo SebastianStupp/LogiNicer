@@ -4,6 +4,7 @@ import MenuLogo from '../assets/logosmall.svg';
 import Logout from '../assets/logout.svg';
 import MenuButton from '../assets/menubutton.svg';
 import PropTypes from 'prop-types';
+import { useHistory, useLocation } from 'react-router-dom';
 
 const Header = styled.div`
   display: flex;
@@ -21,7 +22,9 @@ const HeaderTitle = styled.h2`
   font-size: 1.2 rem;
 `;
 
-const HeaderImg = styled.img``;
+const HeaderImg = styled.img`
+  cursor: pointer;
+`;
 
 const headerButtons = {
   menu: {
@@ -35,6 +38,16 @@ const headerButtons = {
 };
 
 export default function DefaultHeading(props) {
+  let location = useLocation();
+  let history = useHistory();
+  function HandleOnClick() {
+    if (location.pathname === '/menu') {
+      history.push('/');
+    } else {
+      history.push('/menu');
+    }
+  }
+
   return (
     <Header>
       <HeaderImg src={MenuLogo} alt="MenuLogo" />
@@ -42,7 +55,7 @@ export default function DefaultHeading(props) {
       <HeaderImg
         src={headerButtons[props.type].src}
         alt={headerButtons[props.type].alt}
-        onClick={console.log('Clicked')}
+        onClick={HandleOnClick}
       />
     </Header>
   );

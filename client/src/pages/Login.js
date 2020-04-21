@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import LogoLarge from '../assets/logolarge.svg';
+import { useHistory } from 'react-router-dom';
 
 const LoginContainer = styled.div`
   width: 100%;
@@ -31,13 +32,19 @@ const LoginInput = styled(Input)`
 `;
 
 export default function Login() {
+  let history = useHistory();
+
+  function HandleOnClick() {
+    history.push('/menu');
+  }
+
   return (
     <LoginContainer>
       <LoginLogo src={LogoLarge}></LoginLogo>
       <LoginTitle>LogiNicer</LoginTitle>
       <LoginInput placeholder="Username"></LoginInput>
       <LoginInput placeholder="Password"></LoginInput>
-      <Button>Login</Button>
+      <Button onClick={HandleOnClick}>Login</Button>
     </LoginContainer>
   );
 }

@@ -1,25 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { ThemeProvider } from 'emotion-theming';
+import theme from './theme';
+import GlobalStyles from './GlobalStyles';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Login from './pages/Login';
+import Menu from './pages/Menu';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <GlobalStyles></GlobalStyles>
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <Login></Login>
+          </Route>
+          <Route path="/menu">
+            <Menu></Menu>
+          </Route>
+        </Switch>
+      </Router>
+    </ThemeProvider>
   );
 }
 

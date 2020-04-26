@@ -4,4 +4,8 @@ export default {
   title: 'ListCard',
 };
 
-export const DefaultListCard = () => <ListCard></ListCard>;
+const listCardExmaples = ['Example'];
+
+export const DefaultListCard = () => (
+  <ListCard content={listCardExmaples}></ListCard>
+);

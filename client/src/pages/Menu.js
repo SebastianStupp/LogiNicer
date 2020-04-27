@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import React from 'react';
 import Header from '../components/Header';
 import MenuButton from '../components/MenuButton';
+import { useHistory } from 'react-router-dom';
 
 const MenuContainer = styled.div`
   width: 100vw;
@@ -16,15 +17,31 @@ const MenuContainer = styled.div`
 
 const menuOptions = [
   'Client Master',
-  'ItemMaster',
+  'Item Master',
   'Storage System',
   'Inbound',
   'Outbound',
 ];
 
+const menuRoutes = {
+  'Client Master': 'clientmaster',
+  'Item Master': 'itemmaster',
+  'Storage System': 'storgesystem',
+  Inbound: 'inbound',
+  Outbound: 'outbound',
+};
+
 const CreateMenuOptions = () => {
+  let history = useHistory();
+
+  function handleOnClick(event) {
+    history.push(menuRoutes[event.currentTarget.value]);
+  }
+
   return menuOptions.map((menuOptions) => (
-    <MenuButton key={menuOptions}>{menuOptions}</MenuButton>
+    <MenuButton key={menuOptions} value={menuOptions} onClick={handleOnClick}>
+      {menuOptions}
+    </MenuButton>
   ));
 };
 

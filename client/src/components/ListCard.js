@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import Edit from '../assets/edit.svg';
 import Delete from '../assets/delete.svg';
 import { action } from '@storybook/addon-actions';
+import PropTypes from 'prop-types';
 
 const ListCardContainer = styled.div`
   display: flex;
@@ -35,12 +36,10 @@ const ListSymbolImage = styled.img`
   padding: 8px;
 `;
 
-const listExampleContent = ['ClientNameOne', 'ClientNameTwo'];
-
-const CreateListExampleContent = () => {
-  return listExampleContent.map((content) => (
-    <ListCardContainer key={content}>
-      <ListCardContent>{content}</ListCardContent>
+const CreateListExampleContent = ({ content }) => {
+  return content.map((data) => (
+    <ListCardContainer key={data}>
+      <ListCardContent>{data}</ListCardContent>
       <ListSymbolContainer>
         <ListSymbolImage
           src={Edit}
@@ -57,10 +56,16 @@ const CreateListExampleContent = () => {
   ));
 };
 
-export default function ListCard() {
+export default function ListCard(props) {
   return (
     <>
-      <CreateListExampleContent></CreateListExampleContent>
+      <CreateListExampleContent
+        content={props.content}
+      ></CreateListExampleContent>
     </>
   );
 }
+
+ListCard.propTypes = {
+  content: PropTypes.array.isRequired,
+};

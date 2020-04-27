@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import Header from '../components/Header';
 import AddButton from '../components/AddButton';
 import ListCard from '../components/ListCard';
+import useGetClients from '../hooks/getHook';
 
 const PageContainer = styled.div`
   display: flex;
@@ -18,12 +19,15 @@ const MainContainer = styled.div`
   flex-grow: 1;
 `;
 
-export default function ExamplePage() {
+export default function ClientMasterPage() {
+  const [{ clients, error, loading }] = useGetClients();
   return (
     <PageContainer>
       <Header type="menu"></Header>
       <MainContainer>
-        <ListCard></ListCard>
+        {loading && 'loading'}
+        {error && alert('Error')}
+        {clients && <ListCard content={clients}></ListCard>}
       </MainContainer>
       <AddButton></AddButton>
     </PageContainer>

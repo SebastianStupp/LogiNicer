@@ -5,6 +5,7 @@ import GlobalStyles from './GlobalStyles';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Login from './pages/Login';
 import Menu from './pages/Menu';
+import ClientMasterPage from './pages/ClientMasterPage';
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
           </Route>
           <Route path="/menu">
             <Menu></Menu>
+          </Route>
+          <Route path="/clientmaster">
+            <ClientMasterPage />
           </Route>
         </Switch>
       </Router>

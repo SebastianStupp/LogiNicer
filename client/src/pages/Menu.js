@@ -15,24 +15,43 @@ const MenuContainer = styled.div`
   }
 `;
 
-const menuRoutes = {
-  'Client Master': 'clientmaster',
-  'Item Master': 'itemmaster',
-  'Storage System': 'storgesystem',
-  Inbound: 'inbound',
-  Outbound: 'outbound',
-};
+const menuRoutes = [
+  {
+    route: 'clientmaster',
+    label: 'Client Master',
+  },
+  {
+    route: 'itemmaster',
+    label: 'Item Master',
+  },
+  {
+    route: 'storagesystem',
+    label: 'Storage System',
+  },
+  {
+    route: 'inbound',
+    label: 'Inbound',
+  },
+  {
+    route: 'outbound',
+    label: 'Outbound',
+  },
+];
 
 const CreateMenuOptions = () => {
   let history = useHistory();
 
-  function handleOnClick(event) {
-    history.push(menuRoutes[event.currentTarget.value]);
+  function handleClick(route) {
+    history.push(`/${route}`);
   }
 
-  return Object.keys(menuRoutes).map((menuOptions) => (
-    <MenuButton key={menuOptions} value={menuOptions} onClick={handleOnClick}>
-      {menuOptions}
+  return menuRoutes.map((menuRoute) => (
+    <MenuButton
+      key={menuRoute.label}
+      value={menuRoute.label}
+      onClick={() => handleClick(menuRoute.route)}
+    >
+      {menuRoute.label}
     </MenuButton>
   ));
 };

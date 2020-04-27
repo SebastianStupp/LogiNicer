@@ -15,14 +15,6 @@ const MenuContainer = styled.div`
   }
 `;
 
-const menuOptions = [
-  'Client Master',
-  'Item Master',
-  'Storage System',
-  'Inbound',
-  'Outbound',
-];
-
 const menuRoutes = {
   'Client Master': 'clientmaster',
   'Item Master': 'itemmaster',
@@ -38,7 +30,7 @@ const CreateMenuOptions = () => {
     history.push(menuRoutes[event.currentTarget.value]);
   }
 
-  return menuOptions.map((menuOptions) => (
+  return Object.keys(menuRoutes).map((menuOptions) => (
     <MenuButton key={menuOptions} value={menuOptions} onClick={handleOnClick}>
       {menuOptions}
     </MenuButton>

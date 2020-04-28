@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import AddButton from '../components/AddButton';
 import ListCard from '../components/ListCard';
 import useGetClients from '../hooks/getHook';
+import DefaultModal from '../components/Modal';
 
 const PageContainer = styled.div`
   display: flex;
@@ -21,15 +22,41 @@ const MainContainer = styled.div`
 
 export default function ClientMasterPage() {
   const [{ clients, error, loading }] = useGetClients();
+  const [showModal, setShowModal] = React.useState(false);
+
+  const handleClickChange = () => {
+    setShowModal(!showModal);
+  };
+
+  const handleClickRemove = () => {
+    setShowModal(!showModal);
+  };
+
+  const handleClickClose = () => {
+    setShowModal(!showModal);
+  };
+
+  const handleClickAdd = () => {
+    setShowModal(!showModal);
+  };
   return (
     <PageContainer>
+      {showModal ? (
+        <DefaultModal close={handleClickClose}></DefaultModal>
+      ) : null}
       <Header type="menu"></Header>
       <MainContainer>
         {loading && 'loading'}
         {error && alert('Error')}
-        {clients && <ListCard content={clients}></ListCard>}
+        {clients && (
+          <ListCard
+            content={clients}
+            change={handleClickChange}
+            remove={handleClickRemove}
+          ></ListCard>
+        )}
       </MainContainer>
-      <AddButton></AddButton>
+      <AddButton modal={handleClickAdd}></AddButton>
     </PageContainer>
   );
 }

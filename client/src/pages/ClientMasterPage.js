@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import Header from '../components/Header';
 import AddButton from '../components/AddButton';
 import ListCard from '../components/ListCard';
-import useGetClients from '../hooks/getHook';
+import useGetClients from '../hooks/clientHook';
 import DefaultModal from '../components/Modal';
 
 const PageContainer = styled.div`

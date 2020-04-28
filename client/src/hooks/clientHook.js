@@ -1,5 +1,5 @@
 import React from 'react';
-import { getClient } from '../api/getData';
+import { getClient } from '../api/client';
 
 export default function useGetClients() {
   const [clients, setClient] = React.useState(null);

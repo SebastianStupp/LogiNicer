@@ -12,9 +12,9 @@ app.use(cors());
 app.use(express.json());
 
 const loginRouter = require('./backend/routes/login');
-const getDataRouter = require('./backend/routes/getdata');
+const clientRouter = require('./backend/routes/client');
 
-app.use('/get', getDataRouter);
+app.use('/client', clientRouter);
 app.use('/login', loginRouter);
 
 app.use(express.static(path.join(__dirname, 'client/build')));

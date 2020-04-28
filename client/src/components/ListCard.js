@@ -2,7 +2,6 @@ import React from 'react';
 import styled from '@emotion/styled';
 import Edit from '../assets/edit.svg';
 import Delete from '../assets/delete.svg';
-import { action } from '@storybook/addon-actions';
 import PropTypes from 'prop-types';
 
 const ListCardContainer = styled.div`
@@ -32,35 +31,43 @@ const ListSymbolContainer = styled.div`
   justify-content: space-around;
 `;
 
-const ListSymbolImage = styled.img`
+const EditSymbolImage = styled.img`
   padding: 8px;
+  cursor: pointer;
 `;
 
-const CreateListExampleContent = ({ content }) => {
+const DeleteSymbolImage = styled.img`
+  padding: 8px;
+  cursor: pointer;
+`;
+
+const CreateListExampleContent = ({ content, change, remove }) => {
   return content.map((data) => (
     <ListCardContainer key={data}>
       <ListCardContent>{data}</ListCardContent>
       <ListSymbolContainer>
-        <ListSymbolImage
+        <EditSymbolImage
           src={Edit}
           alt="Edit Symbol"
-          onClick={action('click')}
-        ></ListSymbolImage>
-        <ListSymbolImage
+          onClick={change}
+        ></EditSymbolImage>
+        <DeleteSymbolImage
           src={Delete}
           alt="Delete Symbol"
-          onClick={action('click')}
-        ></ListSymbolImage>
+          onClick={remove}
+        ></DeleteSymbolImage>
       </ListSymbolContainer>
     </ListCardContainer>
   ));
 };
 
-export default function ListCard(props) {
+export default function ListCard({ change, content, remove }) {
   return (
     <>
       <CreateListExampleContent
-        content={props.content}
+        content={content}
+        change={change}
+        remove={remove}
       ></CreateListExampleContent>
     </>
   );
@@ -68,4 +75,6 @@ export default function ListCard(props) {
 
 ListCard.propTypes = {
   content: PropTypes.array.isRequired,
+  change: PropTypes.func,
+  remove: PropTypes.func,
 };

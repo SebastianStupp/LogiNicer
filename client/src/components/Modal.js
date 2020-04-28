@@ -25,8 +25,9 @@ const Modal = styled.div`
   background-color: rgba(0, 0, 0, 30%);
   display: flex;
   flex-direction: column;
-  height: 50vh;
+  height: 50%;
   width: 90%;
+  max-width: 500px;
   border-radius: 3px;
 `;
 

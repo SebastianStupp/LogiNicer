@@ -8,7 +8,8 @@ import PropTypes from 'prop-types';
 
 const CloseImage = styled.img`
   align-self: flex-end;
-  padding-right: 8px;
+  padding-right: 10px;
+  margin-right: 3px;
 `;
 
 const ModalContainer = styled.div`
@@ -24,15 +25,16 @@ const ModalContainer = styled.div`
 `;
 
 const Modal = styled.div`
-  background-color: rgba(0, 0, 0, 30%);
+  background-color: rgba(0, 0, 0, 65%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  height: 50%;
+  height: 45%;
   width: 90%;
+  min-height: 250px;
   max-width: 500px;
-  border-radius: 3px;
+  border-radius: 5px;
 `;
 
 const ClientInput = styled(Input)`
@@ -63,7 +65,7 @@ export default function DeleteModal({ close }) {
               setName(event.target.value);
             }}
           ></ClientInput>
-          <Button onClick={handleClick}>Add</Button>
+          <Button onClick={handleClick}>CREATE</Button>
         </Modal>
       </ModalContainer>
     </>

@@ -41,10 +41,10 @@ const DeleteSymbolImage = styled.img`
   cursor: pointer;
 `;
 
-const CreateListExampleContent = ({ content, change, remove }) => {
+export default function ListCard({ change, content, remove }) {
   return content.map((data) => (
-    <ListCardContainer key={data}>
-      <ListCardContent>{data}</ListCardContent>
+    <ListCardContainer key={data._id}>
+      <ListCardContent>{data.clientname}</ListCardContent>
       <ListSymbolContainer>
         <EditSymbolImage
           src={Edit}
@@ -54,23 +54,11 @@ const CreateListExampleContent = ({ content, change, remove }) => {
         <DeleteSymbolImage
           src={Delete}
           alt="Delete Symbol"
-          onClick={remove}
+          onClick={() => remove(data._id)}
         ></DeleteSymbolImage>
       </ListSymbolContainer>
     </ListCardContainer>
   ));
-};
-
-export default function ListCard({ change, content, remove }) {
-  return (
-    <>
-      <CreateListExampleContent
-        content={content}
-        change={change}
-        remove={remove}
-      ></CreateListExampleContent>
-    </>
-  );
 }
 
 ListCard.propTypes = {

@@ -3,7 +3,8 @@ import styled from '@emotion/styled';
 import Header from '../components/Header';
 import AddButton from '../components/AddButton';
 import ListCard from '../components/ListCard';
-import useGetClients from '../hooks/clientHook';
+import useGetClients from '../hooks/useGetClients';
+import DeleteModal from '../components/DeleteModal';
 import DefaultModal from '../components/Modal';
 
 const PageContainer = styled.div`
@@ -21,38 +22,56 @@ const MainContainer = styled.div`
 `;
 
 export default function ClientMasterPage() {
-  const [{ clients, error, loading }] = useGetClients();
+  const [{ clients, error, loading }, doGetClients] = useGetClients();
+  const [showDeleteModal, setShowDeleteModal] = React.useState(false);
   const [showModal, setShowModal] = React.useState(false);
+  const [clientId, setClientId] = React.useState(null);
 
   const handleClickChange = () => {
     setShowModal(!showModal);
   };
 
-  const handleClickRemove = () => {
-    setShowModal(!showModal);
+  const handleRemoveOnClick = (clientId) => {
+    setClientId(clientId);
+    setShowDeleteModal(!showDeleteModal);
   };
 
-  const handleClickClose = () => {
+  const onClickCloseModal = () => {
     setShowModal(!showModal);
   };
 
   const handleClickAdd = () => {
     setShowModal(!showModal);
   };
+
+  const onClickCloseDeleteModal = () => {
+    setShowDeleteModal(!showDeleteModal);
+    doGetClients();
+  };
+
   return (
     <PageContainer>
+      {showDeleteModal ? (
+        <DeleteModal
+          close={onClickCloseDeleteModal}
+          clientId={clientId}
+        ></DeleteModal>
+      ) : null}
       {showModal ? (
-        <DefaultModal close={handleClickClose}></DefaultModal>
+        <DefaultModal
+          close={onClickCloseModal}
+          clientId={clientId}
+        ></DefaultModal>
       ) : null}
       <Header type="menu"></Header>
       <MainContainer>
         {loading && 'loading'}
-        {error && alert('Error')}
+        {error && 'Error'}
         {clients && (
           <ListCard
             content={clients}
             change={handleClickChange}
-            remove={handleClickRemove}
+            remove={handleRemoveOnClick}
           ></ListCard>
         )}
       </MainContainer>

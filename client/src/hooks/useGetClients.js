@@ -1,15 +1,15 @@
 import React from 'react';
-import { getClient } from '../api/client';
+import { getClients } from '../api/clients';
 
 export default function useGetClients() {
-  const [clients, setClient] = React.useState(null);
+  const [clients, setClients] = React.useState(null);
   const [error, setError] = React.useState(false);
   const [loading, setLoading] = React.useState(true);
 
   async function doGetClients() {
     try {
-      const clientList = await getClient();
-      setClient(clientList);
+      const clientList = await getClients();
+      setClients(clientList);
     } catch (error) {
       setError(true);
     } finally {
@@ -21,5 +21,5 @@ export default function useGetClients() {
     doGetClients();
   }, []);
 
-  return [{ clients, error, loading }];
+  return [{ clients, error, loading }, doGetClients];
 }

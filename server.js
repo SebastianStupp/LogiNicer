@@ -14,8 +14,8 @@ app.use(express.json());
 const loginRouter = require('./backend/routes/login');
 const clientRouter = require('./backend/routes/clients');
 
-app.use('/clients', clientRouter);
-app.use('/login', loginRouter);
+app.use('/api/clients', clientRouter);
+app.use('/api/login', loginRouter);
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 

@@ -1,10 +1,22 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { keyframes } from '@emotion/core';
 import Close from '../assets/close.svg';
 import usePostClient from '../hooks/usePostClient';
 import Button from '../components/Button';
 import Input from '../components/Input';
 import PropTypes from 'prop-types';
+
+const fadeIn = keyframes`
+0% {
+  opacity: 0;
+ 
+}
+100% {
+  opacity: 1;
+  
+}
+`;
 
 const CloseImage = styled.img`
   align-self: flex-end;
@@ -35,6 +47,7 @@ const Modal = styled.div`
   min-height: 250px;
   max-width: 500px;
   border-radius: 5px;
+  animation: 0.8s ${fadeIn} ease-in;
 `;
 
 const ClientInput = styled(Input)`

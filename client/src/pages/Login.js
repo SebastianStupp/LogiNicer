@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import LogoLarge from '../assets/logolarge.svg';
+import Truck from '../animations/Truck';
 import { useHistory } from 'react-router-dom';
 
 const LoginContainer = styled.div`
@@ -12,6 +13,7 @@ const LoginContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  overflow: hidden;
 `;
 
 const LoginLogo = styled.img`
@@ -45,6 +47,7 @@ export default function Login() {
       <LoginInput placeholder="Username"></LoginInput>
       <LoginInput placeholder="Password"></LoginInput>
       <Button onClick={HandleOnClick}>Login</Button>
+      <Truck></Truck>
     </LoginContainer>
   );
 }

@@ -4,11 +4,21 @@ import Close from '../assets/close.svg';
 import useDeleteClient from '../hooks/useDeleteClient';
 import Button from '../components/Button';
 import PropTypes from 'prop-types';
+import { keyframes } from '@emotion/core';
+
+const fadeIn = keyframes`
+0% {
+  opacity: 0;
+ 
+}
+100% {
+  opacity: 1;
+  
+}
+`;
 
 const CloseImage = styled.img`
-  align-self: flex-start;
-  padding-top: 8px;
-  padding-left: 8px;
+  align-self: flex-end;
 `;
 
 const ModalContainer = styled.div`
@@ -17,28 +27,25 @@ const ModalContainer = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 1;
 `;
 
 const Modal = styled.div`
-  background-color: rgba(0, 0, 0, 30%);
+  background-color: rgba(0, 0, 0, 65%);
   display: flex;
   flex-direction: column;
-  height: 50%;
+  justify-content: space-between;
+  align-items: center;
+  height: 45%;
   width: 90%;
+  min-height: 250px;
   max-width: 500px;
-  border-radius: 3px;
-`;
-
-const ModalContent = styled.div`
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  height: 100%;
-  width: 100%;
+  border-radius: 5px;
+  padding: 20px;
+  animation: 0.8s ${fadeIn} ease-in;
 `;
 
 export default function DeleteModal({ close, clientId }) {
@@ -56,7 +63,6 @@ export default function DeleteModal({ close, clientId }) {
       <ModalContainer>
         <Modal>
           <CloseImage src={Close} onClick={close}></CloseImage>
-          <ModalContent></ModalContent>
           <Button onClick={handleClick}>Delete</Button>
         </Modal>
       </ModalContainer>

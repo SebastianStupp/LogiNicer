@@ -10,18 +10,15 @@ import PropTypes from 'prop-types';
 const fadeIn = keyframes`
 0% {
   opacity: 0;
- 
 }
+
 100% {
   opacity: 1;
-  
 }
 `;
 
 const CloseImage = styled.img`
   align-self: flex-end;
-  padding-right: 10px;
-  margin-right: 3px;
 `;
 
 const ModalContainer = styled.div`
@@ -41,7 +38,8 @@ const Modal = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 20px;
   height: 45%;
   width: 90%;
   min-height: 250px;

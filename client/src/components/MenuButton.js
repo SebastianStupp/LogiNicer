@@ -9,6 +9,7 @@ const MenuButton = styled.button`
   color: ${(props) => props.theme.colors.textprimary};
   padding: 0px;
   border: 0;
+  font-weight: bold;
 `;
 
 export default MenuButton;

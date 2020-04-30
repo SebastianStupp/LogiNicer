@@ -8,6 +8,7 @@ const ListCardContainer = styled.div`
   display: flex;
   background-color: ${(props) => props.theme.colors.primary};
   width: 100%;
+  margin-top: 2px;
   max-width: 500px;
   max-height: 200px;
   color: ${(props) => props.theme.colors.textprimary};
@@ -20,6 +21,7 @@ const ListCardContent = styled.div`
   flex-basis: 80%;
   padding-top: 10px;
   padding-left: 10px;
+  font-weight: bold;
   font-size: 1.8rem;
 `;
 

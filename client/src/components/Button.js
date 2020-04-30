@@ -9,6 +9,8 @@ const Button = styled.button`
   padding: 0px;
   border: 0;
   cursor: pointer;
+  color: ${(props) => props.theme.colors.textprimary};
+  font-weight: bold;
 `;
 
 export default Button;

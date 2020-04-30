@@ -6,6 +6,7 @@ import ListCard from '../components/ListCard';
 import useGetClients from '../hooks/useGetClients';
 import DeleteModal from '../components/DeleteModal';
 import DefaultModal from '../components/Modal';
+import AddModal from '../components/AddModal';
 
 const PageContainer = styled.div`
   display: flex;
@@ -24,6 +25,7 @@ const MainContainer = styled.div`
 export default function ClientMasterPage() {
   const [{ clients, error, loading }, doGetClients] = useGetClients();
   const [showDeleteModal, setShowDeleteModal] = React.useState(false);
+  const [showAddModal, setAddModal] = React.useState(false);
   const [showModal, setShowModal] = React.useState(false);
   const [clientId, setClientId] = React.useState(null);
 
@@ -40,8 +42,13 @@ export default function ClientMasterPage() {
     setShowModal(!showModal);
   };
 
-  const handleClickAdd = () => {
-    setShowModal(!showModal);
+  const onClickCloseAddModal = () => {
+    setAddModal(!showAddModal);
+    doGetClients();
+  };
+
+  const onClickOpenAddModal = () => {
+    setAddModal(true);
   };
 
   const onClickCloseDeleteModal = () => {
@@ -51,6 +58,7 @@ export default function ClientMasterPage() {
 
   return (
     <PageContainer>
+      {showAddModal ? <AddModal close={onClickCloseAddModal}></AddModal> : null}
       {showDeleteModal ? (
         <DeleteModal
           close={onClickCloseDeleteModal}
@@ -75,7 +83,7 @@ export default function ClientMasterPage() {
           ></ListCard>
         )}
       </MainContainer>
-      <AddButton modal={handleClickAdd}></AddButton>
+      <AddButton modal={onClickOpenAddModal}></AddButton>
     </PageContainer>
   );
 }

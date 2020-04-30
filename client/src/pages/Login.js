@@ -17,18 +17,18 @@ const LoginContainer = styled.div`
 `;
 
 const LoginLogo = styled.img`
-  margin-top: 100px;
+  margin-top: 65px;
   margin-bottom: 5px;
 `;
 
 const LoginTitle = styled.div`
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   color: ${(props) => props.theme.colors.textsecondary};
   font-size: 1.8rem;
 `;
 
 const LoginInput = styled(Input)`
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   text-align: center;
   font-size: 1.2rem;
 `;

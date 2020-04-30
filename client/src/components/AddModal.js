@@ -18,7 +18,7 @@ const ModalContainer = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 1;
@@ -53,7 +53,7 @@ export default function DeleteModal({ close }) {
 
   return (
     <>
-      {loading && 'loading...'}
+      {loading}
       {errormsg && 'Error'}
       <ModalContainer>
         <Modal>

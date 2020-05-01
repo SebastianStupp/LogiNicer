@@ -21,6 +21,11 @@ const CloseImage = styled.img`
   align-self: flex-end;
 `;
 
+const Title = styled.h3`
+  color: ${(props) => props.theme.colors.texttertiary};
+  margin-bottom: 40px;
+`;
+
 const ModalContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -48,7 +53,7 @@ const Modal = styled.div`
   animation: 0.8s ${fadeIn} ease-in;
 `;
 
-export default function DeleteModal({ close, clientId }) {
+export default function DeleteModal({ close, clientId, client }) {
   const [{ loading, error }, doDeleteClient] = useDeleteClient(clientId);
 
   async function handleClick() {
@@ -63,6 +68,7 @@ export default function DeleteModal({ close, clientId }) {
       <ModalContainer>
         <Modal>
           <CloseImage src={Close} onClick={close}></CloseImage>
+          <Title>{`Delete Client <${client}>?`}</Title>
           <Button onClick={handleClick}>Delete</Button>
         </Modal>
       </ModalContainer>
@@ -73,4 +79,5 @@ export default function DeleteModal({ close, clientId }) {
 DeleteModal.propTypes = {
   close: PropTypes.func,
   clientId: PropTypes.string,
+  client: PropTypes.string,
 };

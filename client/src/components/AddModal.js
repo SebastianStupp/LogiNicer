@@ -21,6 +21,11 @@ const CloseImage = styled.img`
   align-self: flex-end;
 `;
 
+const Title = styled.h2`
+  color: ${(props) => props.theme.colors.texttertiary};
+  margin-bottom: 40px;
+`;
+
 const ModalContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -69,6 +74,7 @@ export default function DeleteModal({ close }) {
       <ModalContainer>
         <Modal>
           <CloseImage src={Close} onClick={close}></CloseImage>
+          <Title>Create New Client</Title>
           <ClientInput
             placeholder="Please Enter ClientName"
             maxLength="24"

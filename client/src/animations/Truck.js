@@ -10,7 +10,7 @@ const startLeft = keyframes`
   }
   
 100%
-{left:100%; top:0px; opacity: 0; width: 0%
+{left:100%; top:0px; opacity: 0.8; width: 0%
 height: 0%
 }
  

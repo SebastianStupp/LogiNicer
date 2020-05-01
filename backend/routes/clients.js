@@ -7,7 +7,7 @@ router.get('/', (request, response) => {
     .catch((err) => response.json('Error:' + err));
 });
 
-router.post('/post', (request, response) => {
+router.post('/', (request, response) => {
   const clientname = request.body.clientname;
 
   const clientCollection = new Client({ clientname });
@@ -20,6 +20,15 @@ router.post('/post', (request, response) => {
 router.delete('/:id', (request, response) => {
   Client.findByIdAndRemove({ _id: request.params.id })
     .then((client) => response.json(client))
+    .catch((err) => response.json('Error:' + err));
+});
+
+router.patch('/:id', (request, response) => {
+  Client.findByIdAndUpdate(
+    { _id: request.params.id },
+    { $set: { clientname: request.body.clientname } }
+  )
+    .then((clientname) => response.json(clientname))
     .catch((err) => response.json('Error:' + err));
 });
 

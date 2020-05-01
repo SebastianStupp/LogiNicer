@@ -51,12 +51,12 @@ export default function ListCard({ change, content, remove }) {
         <EditSymbolImage
           src={Edit}
           alt="Edit Symbol"
-          onClick={change}
+          onClick={() => change(data._id, data.clientname)}
         ></EditSymbolImage>
         <DeleteSymbolImage
           src={Delete}
           alt="Delete Symbol"
-          onClick={() => remove(data._id)}
+          onClick={() => remove(data._id, data.clientname)}
         ></DeleteSymbolImage>
       </ListSymbolContainer>
     </ListCardContainer>

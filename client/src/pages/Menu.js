@@ -21,8 +21,8 @@ const menuRoutes = [
     label: 'Client Master',
   },
   {
-    route: 'itemmaster',
-    label: 'Item Master',
+    route: 'articlemaster',
+    label: 'Article Master',
   },
   {
     route: 'storagesystem',

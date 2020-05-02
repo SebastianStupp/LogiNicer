@@ -13,7 +13,9 @@ app.use(express.json());
 
 const loginRouter = require('./backend/routes/login');
 const clientRouter = require('./backend/routes/clients');
+const articleRouter = require('./backend/routes/articles');
 
+app.use('/api/articles', articleRouter);
 app.use('/api/clients', clientRouter);
 app.use('/api/login', loginRouter);
 

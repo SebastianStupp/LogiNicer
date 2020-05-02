@@ -5,7 +5,7 @@ import AddButton from '../components/AddButton';
 import ListCard from '../components/ListCard';
 import useGetClients from '../hooks/useGetClients';
 import DeleteModal from '../components/DeleteModal';
-import DefaultModal from '../components/Modal';
+import ChangeModal from '../components/ChangeModal';
 import AddModal from '../components/AddModal';
 
 const PageContainer = styled.div`
@@ -26,20 +26,26 @@ export default function ClientMasterPage() {
   const [{ clients, error, loading }, doGetClients] = useGetClients();
   const [showDeleteModal, setShowDeleteModal] = React.useState(false);
   const [showAddModal, setAddModal] = React.useState(false);
-  const [showModal, setShowModal] = React.useState(false);
+  const [showChangeModal, setShowChangeModal] = React.useState(false);
   const [clientId, setClientId] = React.useState(null);
+  const [client, setClient] = React.useState(null);
 
-  const handleClickChange = () => {
-    setShowModal(!showModal);
+  const handleChangeOnClick = (clientId, client) => {
+    setClientId(clientId);
+    setClient(client);
+
+    setShowChangeModal(!showChangeModal);
   };
 
-  const handleRemoveOnClick = (clientId) => {
+  const handleRemoveOnClick = (clientId, client) => {
     setClientId(clientId);
+    setClient(client);
     setShowDeleteModal(!showDeleteModal);
   };
 
-  const onClickCloseModal = () => {
-    setShowModal(!showModal);
+  const onClickCloseChangeModal = () => {
+    setShowChangeModal(!showChangeModal);
+    doGetClients();
   };
 
   const onClickCloseAddModal = () => {
@@ -63,13 +69,15 @@ export default function ClientMasterPage() {
         <DeleteModal
           close={onClickCloseDeleteModal}
           clientId={clientId}
+          client={client}
         ></DeleteModal>
       ) : null}
-      {showModal ? (
-        <DefaultModal
-          close={onClickCloseModal}
+      {showChangeModal ? (
+        <ChangeModal
+          close={onClickCloseChangeModal}
           clientId={clientId}
-        ></DefaultModal>
+          client={client}
+        ></ChangeModal>
       ) : null}
       <Header type="menu"></Header>
       <MainContainer>
@@ -78,7 +86,7 @@ export default function ClientMasterPage() {
         {clients && (
           <ListCard
             content={clients}
-            change={handleClickChange}
+            change={handleChangeOnClick}
             remove={handleRemoveOnClick}
           ></ListCard>
         )}

@@ -9,7 +9,7 @@ export default function useGetArticles() {
   async function doGetArticles() {
     try {
       const articleList = await getArticles();
-      console.log(articleList);
+
       setArticles(articleList);
     } catch (error) {
       setError(true);

@@ -1,7 +1,6 @@
 export async function getArticles() {
   const response = await fetch('/api/articles');
   const articles = await response.json();
-  console.log(articles);
   return articles;
 }
 

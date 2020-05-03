@@ -8,7 +8,7 @@ router.get('/', (request, response) => {
 });
 
 router.post('/', (request, response) => {
-  const articlenumber = request.body.articlenumber;
+  const articleNumber = request.body.articlenumber;
   const client = request.body.clientname;
   const bbd = request.body.bdd;
   const pzn = request.body.pzn;
@@ -16,7 +16,7 @@ router.post('/', (request, response) => {
   const time = request.body.time;
 
   const newArticle = new Article({
-    articlenumber,
+    articleNumber,
     client,
     bbd,
     pzn,

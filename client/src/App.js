@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Login from './pages/Login';
 import Menu from './pages/Menu';
 import ClientMasterPage from './pages/ClientMasterPage';
+import ArticleMasterPage from './pages/ArticleMasterPage';
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
           </Route>
           <Route path="/clientmaster">
             <ClientMasterPage />
+          </Route>
+          <Route path="/articlemaster">
+            <ArticleMasterPage />
           </Route>
         </Switch>
       </Router>

@@ -52,7 +52,14 @@ export default function ListCard({ change, content, remove }) {
           src={Edit}
           alt="Edit Symbol"
           onClick={() =>
-            change(data._id, data.clientname || data.articlenumber)
+            change(
+              data._id,
+              data.clientname || data.articlenumber,
+              data.client,
+              data.bbd,
+              data.pzn,
+              data.ean
+            )
           }
         ></EditSymbolImage>
         <DeleteSymbolImage

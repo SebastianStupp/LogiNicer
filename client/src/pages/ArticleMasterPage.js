@@ -49,13 +49,11 @@ export default function ArticleMasterPage() {
     setPzn(pzn);
     setEan(ean);
     setShowChangeModal(!showChangeModal);
-    console.log(articlenumber, pzn, articleId, ean);
   };
 
   const handleRemoveOnClick = (articleId, articlenumber) => {
     setArticleId(articleId);
     setArticleNumber(articlenumber);
-    console.log(articlenumber);
 
     setShowDeleteModal(!showDeleteModal);
   };

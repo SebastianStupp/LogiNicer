@@ -88,7 +88,7 @@ export default function DeleteModal({
   }
   async function handleonClickArticle() {
     await doDeleteArticle(articleId);
-    console.log(articleId);
+
     close();
   }
 

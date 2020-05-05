@@ -10,7 +10,6 @@ export default function usePostClient() {
     try {
       const article = await postArticle(articlenumber, client, bbd, pzn, ean);
       setArticle(article);
-      console.log(article);
     } catch (errormsg) {
       setError(true);
     } finally {

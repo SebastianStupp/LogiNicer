@@ -2,9 +2,11 @@ import React from 'react';
 import styled from '@emotion/styled';
 import Close from '../assets/close.svg';
 import useDeleteClient from '../hooks/useDeleteClient';
+import useDeleteArticle from '../hooks/useDeleteArticle';
 import Button from '../components/Button';
 import PropTypes from 'prop-types';
 import { keyframes } from '@emotion/core';
+import { useLocation } from 'react-router-dom';
 
 const fadeIn = keyframes`
 0% {
@@ -21,7 +23,7 @@ const CloseImage = styled.img`
   align-self: flex-end;
 `;
 
-const Title = styled.h3`
+const Title = styled.h1`
   color: ${(props) => props.theme.colors.texttertiary};
   margin-bottom: 40px;
 `;
@@ -53,25 +55,67 @@ const Modal = styled.div`
   animation: 0.8s ${fadeIn} ease-in;
 `;
 
-export default function DeleteModal({ close, clientId, client }) {
+export default function DeleteModal({
+  close,
+  clientId,
+  client,
+  articleId,
+  article,
+}) {
   const [{ loading, error }, doDeleteClient] = useDeleteClient(clientId);
+  const [{ loadingArticle, errorArticle }, doDeleteArticle] = useDeleteArticle(
+    articleId
+  );
+  const [modalTypeClient, setModalTypeClient] = React.useState(false);
+  const [modalTypeArticle, setModalTypeArticle] = React.useState(false);
+  const location = useLocation();
+  function DeclareModalType() {
+    React.useEffect(() => {
+      if (location.pathname === '/articlemaster') {
+        setModalTypeArticle(!modalTypeArticle);
+      }
 
-  async function handleClick() {
+      if (location.pathname === '/clientmaster') {
+        setModalTypeClient(!modalTypeClient);
+      }
+    }, []);
+  }
+  DeclareModalType();
+
+  async function handleonClickClient() {
     await doDeleteClient(clientId);
+    close();
+  }
+  async function handleonClickArticle() {
+    await doDeleteArticle(articleId);
+    console.log(articleId);
     close();
   }
 
   return (
     <>
+      {loadingArticle && 'loading...'}
+      {errorArticle && 'Error'}
+      {modalTypeArticle ? (
+        <ModalContainer>
+          <Modal>
+            <CloseImage src={Close} onClick={close}></CloseImage>
+            <Title>{`Delete Article <${article}>?`}</Title>
+            <Button onClick={handleonClickArticle}>Delete</Button>
+          </Modal>
+        </ModalContainer>
+      ) : null}
       {loading && 'loading...'}
       {error && 'Error'}
-      <ModalContainer>
-        <Modal>
-          <CloseImage src={Close} onClick={close}></CloseImage>
-          <Title>{`Delete Client <${client}>?`}</Title>
-          <Button onClick={handleClick}>Delete</Button>
-        </Modal>
-      </ModalContainer>
+      {modalTypeClient ? (
+        <ModalContainer>
+          <Modal>
+            <CloseImage src={Close} onClick={close}></CloseImage>
+            <Title>{`Delete Client <${client}>?`}</Title>
+            <Button onClick={handleonClickClient}>Delete</Button>
+          </Modal>
+        </ModalContainer>
+      ) : null}
     </>
   );
 }
@@ -80,4 +124,6 @@ DeleteModal.propTypes = {
   close: PropTypes.func,
   clientId: PropTypes.string,
   client: PropTypes.string,
+  articleId: PropTypes.string,
+  article: PropTypes.string,
 };

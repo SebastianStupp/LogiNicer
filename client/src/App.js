@@ -8,6 +8,7 @@ import Menu from './pages/Menu';
 import ClientMasterPage from './pages/ClientMasterPage';
 import ArticleMasterPage from './pages/ArticleMasterPage';
 import StorageMasterPage from './pages/StorageMasterPage';
+import Inbound from './pages/Inbound';
 
 function App() {
   return (
@@ -29,6 +30,9 @@ function App() {
           </Route>
           <Route path="/storagesystem">
             <StorageMasterPage />
+          </Route>
+          <Route path="/inbound">
+            <Inbound></Inbound>
           </Route>
         </Switch>
       </Router>

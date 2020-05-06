@@ -99,7 +99,7 @@ export default function ChangeModal({
   const [{ loading, error }, doPatchClient] = usePatchClient();
   const [clientName, setClientName] = React.useState(client);
   const [storageName, setStorageName] = React.useState(storage);
-  const [articlenumber, setArticleNumber] = React.useState(article);
+  const [articleNumber, setArticleNumber] = React.useState(article);
   const [bbdValue, setBbdValue] = React.useState(bbd);
   const [pznValue, setPznValue] = React.useState(pzn);
   const [eanValue, setEanValue] = React.useState(ean);
@@ -136,7 +136,7 @@ export default function ChangeModal({
   }
 
   async function handleOnClickArticle() {
-    await doPatchArticle(articleId, articlenumber, client, bbd, pzn, ean);
+    await doPatchArticle(articleId, articleNumber, client, bbd, pzn, ean);
     close();
   }
 
@@ -160,7 +160,7 @@ export default function ChangeModal({
                 onContentChange={handleClientChange}
               ></ClientDropdown>
               <InputContainer
-                value={articlenumber}
+                value={articleNumber}
                 maxLength="24"
                 onChange={(event) => {
                   setArticleNumber(event.target.value);

@@ -28,7 +28,7 @@ export default function ArticleMasterPage() {
   const [showAddModal, setAddModal] = React.useState(false);
   const [showChangeModal, setShowChangeModal] = React.useState(false);
   const [articleId, setArticleId] = React.useState(null);
-  const [articlenumber, setArticleNumber] = React.useState(null);
+  const [articleNumber, setArticleNumber] = React.useState(null);
   const [client, setClient] = React.useState(null);
   const [bbd, setBbd] = React.useState(false);
   const [pzn, setPzn] = React.useState(false);
@@ -36,14 +36,14 @@ export default function ArticleMasterPage() {
 
   const handleChangeOnClick = (
     articleId,
-    articlenumber,
+    articleNumber,
     client,
     bbd,
     pzn,
     ean
   ) => {
     setArticleId(articleId);
-    setArticleNumber(articlenumber);
+    setArticleNumber(articleNumber);
     setClient(client);
     setBbd(bbd);
     setPzn(pzn);
@@ -51,9 +51,9 @@ export default function ArticleMasterPage() {
     setShowChangeModal(!showChangeModal);
   };
 
-  const handleRemoveOnClick = (articleId, articlenumber) => {
+  const handleRemoveOnClick = (articleId, articleNumber) => {
     setArticleId(articleId);
-    setArticleNumber(articlenumber);
+    setArticleNumber(articleNumber);
 
     setShowDeleteModal(!showDeleteModal);
   };
@@ -84,14 +84,14 @@ export default function ArticleMasterPage() {
         <DeleteModal
           close={onClickCloseDeleteModal}
           articleId={articleId}
-          article={articlenumber}
+          article={articleNumber}
         ></DeleteModal>
       ) : null}
       {showChangeModal ? (
         <ChangeModal
           close={onClickCloseChangeModal}
           articleId={articleId}
-          article={articlenumber}
+          article={articleNumber}
           client={client}
           bbd={bbd}
           pzn={pzn}

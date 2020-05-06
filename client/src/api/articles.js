@@ -4,13 +4,13 @@ export async function getArticles() {
   return articles;
 }
 
-export async function postArticle(articlenumber, client, bbd, pzn, ean) {
+export async function postArticle(articleNumber, client, bbd, pzn, ean) {
   const response = await fetch('/api/articles', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ articlenumber, client, bbd, pzn, ean }),
+    body: JSON.stringify({ articleNumber, client, bbd, pzn, ean }),
   });
   const createArticle = await response.json();
   return createArticle;
@@ -29,7 +29,7 @@ export async function deleteArticle(articleId) {
 
 export async function patchArticle(
   articleId,
-  articlenumber,
+  articleNumber,
   client,
   bbd,
   pzn,
@@ -40,7 +40,7 @@ export async function patchArticle(
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ articlenumber, client, bbd, pzn, ean }),
+    body: JSON.stringify({ articleNumber, client, bbd, pzn, ean }),
   });
   const patchArticle = await response.json();
   return patchArticle;

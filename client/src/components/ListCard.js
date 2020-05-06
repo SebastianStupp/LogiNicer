@@ -47,7 +47,7 @@ export default function ListCard({ change, content, remove }) {
   return content.map((data) => (
     <ListCardContainer key={data._id}>
       <ListCardContent>
-        {data.clientname || data.articlenumber || data.storage}
+        {data.clientname || data.articleNumber || data.storage}
       </ListCardContent>
       <ListSymbolContainer>
         <EditSymbolImage
@@ -60,7 +60,7 @@ export default function ListCard({ change, content, remove }) {
                 ? data.clientname
                 : data.storage
                 ? data.storage
-                : data.articlenumber,
+                : data.articleNumber,
               data.client,
               data.bbd,
               data.pzn,
@@ -74,7 +74,7 @@ export default function ListCard({ change, content, remove }) {
           onClick={() =>
             remove(
               data._id,
-              data.clientname || data.articlenumber || data.storage
+              data.clientname || data.articleNumber || data.storage
             )
           }
         ></DeleteSymbolImage>

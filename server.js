@@ -14,10 +14,12 @@ app.use(express.json());
 const loginRouter = require('./backend/routes/login');
 const clientRouter = require('./backend/routes/clients');
 const articleRouter = require('./backend/routes/articles');
+const storageRouter = require('./backend/routes/storages');
 
 app.use('/api/articles', articleRouter);
 app.use('/api/clients', clientRouter);
 app.use('/api/login', loginRouter);
+app.use('/api/storages', storageRouter);
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 

@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import Close from '../assets/close.svg';
 import useDeleteClient from '../hooks/useDeleteClient';
 import useDeleteArticle from '../hooks/useDeleteArticle';
+import useDeleteStorage from '../hooks/useDeleteStorage';
 import Button from '../components/Button';
 import PropTypes from 'prop-types';
 import { keyframes } from '@emotion/core';
@@ -61,13 +62,21 @@ export default function DeleteModal({
   client,
   articleId,
   article,
+  storageId,
+  storage,
 }) {
-  const [{ loading, error }, doDeleteClient] = useDeleteClient(clientId);
-  const [{ loadingArticle, errorArticle }, doDeleteArticle] = useDeleteArticle(
-    articleId
-  );
+  const [{ loading, error }, doDeleteClient] = useDeleteClient();
+  const [
+    { loadingArticle, errorArticle },
+    doDeleteArticle,
+  ] = useDeleteArticle();
+  const [
+    { loadingStorage, errorStorage },
+    doDeleteStorage,
+  ] = useDeleteStorage();
   const [modalTypeClient, setModalTypeClient] = React.useState(false);
   const [modalTypeArticle, setModalTypeArticle] = React.useState(false);
+  const [modalTypeStorage, setModalTypeStorage] = React.useState(false);
   const location = useLocation();
 
   React.useEffect(() => {
@@ -77,6 +86,9 @@ export default function DeleteModal({
     if (location.pathname === '/clientmaster') {
       setModalTypeClient(!modalTypeClient);
     }
+    if (location.pathname === '/storagesystem') {
+      setModalTypeStorage(!modalTypeStorage);
+    }
   }, []);
 
   async function handleonClickClient() {
@@ -85,33 +97,55 @@ export default function DeleteModal({
   }
   async function handleonClickArticle() {
     await doDeleteArticle(articleId);
-
+    close();
+  }
+  async function handleOnClickStorage() {
+    await doDeleteStorage(storageId);
     close();
   }
 
   return (
     <>
-      {loadingArticle && 'loading...'}
-      {errorArticle && 'Error'}
       {modalTypeArticle ? (
-        <ModalContainer>
-          <Modal>
-            <CloseImage src={Close} onClick={close}></CloseImage>
-            <Title>{`Delete Article <${article}>?`}</Title>
-            <Button onClick={handleonClickArticle}>Delete</Button>
-          </Modal>
-        </ModalContainer>
+        <>
+          {loadingArticle && 'loading...'}
+          {errorArticle && 'Error'}
+          <ModalContainer>
+            <Modal>
+              <CloseImage src={Close} onClick={close}></CloseImage>
+              <Title>{`Delete Article <${article}>?`}</Title>
+              <Button onClick={handleonClickArticle}>Delete</Button>
+            </Modal>
+          </ModalContainer>
+        </>
       ) : null}
-      {loading && 'loading...'}
-      {error && 'Error'}
+
       {modalTypeClient ? (
-        <ModalContainer>
-          <Modal>
-            <CloseImage src={Close} onClick={close}></CloseImage>
-            <Title>{`Delete Client <${client}>?`}</Title>
-            <Button onClick={handleonClickClient}>Delete</Button>
-          </Modal>
-        </ModalContainer>
+        <>
+          {loading && 'loading...'}
+          {error && 'Error'}
+          <ModalContainer>
+            <Modal>
+              <CloseImage src={Close} onClick={close}></CloseImage>
+              <Title>{`Delete Client <${client}>?`}</Title>
+              <Button onClick={handleonClickClient}>Delete</Button>
+            </Modal>
+          </ModalContainer>
+        </>
+      ) : null}
+
+      {modalTypeStorage ? (
+        <>
+          {loadingStorage && 'loading...'}
+          {errorStorage && 'Error'}
+          <ModalContainer>
+            <Modal>
+              <CloseImage src={Close} onClick={close}></CloseImage>
+              <Title>{`Delete Client <${storage}>?`}</Title>
+              <Button onClick={handleOnClickStorage}>Delete</Button>
+            </Modal>
+          </ModalContainer>
+        </>
       ) : null}
     </>
   );
@@ -123,4 +157,6 @@ DeleteModal.propTypes = {
   client: PropTypes.string,
   articleId: PropTypes.string,
   article: PropTypes.string,
+  storageId: PropTypes.string,
+  storage: PropTypes.string,
 };

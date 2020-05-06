@@ -5,6 +5,7 @@ import { keyframes } from '@emotion/core';
 import Close from '../assets/close.svg';
 import usePostArticle from '../hooks/usePostArticle';
 import usePostClient from '../hooks/usePostClient';
+import usePostStorage from '../hooks/usePostStorage';
 import Button from '../components/Button';
 import Input from '../components/Input';
 import PropTypes from 'prop-types';
@@ -77,7 +78,9 @@ export default function AddModal({ close }) {
   let location = useLocation();
   const [{ loadingArticle, errorArticle }, doPostArticle] = usePostArticle();
   const [{ loading, errormsg }, doPostClient] = usePostClient();
-  const [name, setName] = React.useState('');
+  const [{ loadingStorage, errorStorage }, doPostStorage] = usePostStorage();
+  const [storage, setStorage] = React.useState('');
+  const [clientName, setClientName] = React.useState('');
   const [articleNumber, setArticleNumber] = React.useState(null);
   const [client, setClient] = React.useState(null);
   const [bbd, setBbd] = React.useState(false);
@@ -85,7 +88,7 @@ export default function AddModal({ close }) {
   const [ean, setEan] = React.useState(false);
   const [modalTypeClient, setModalTypeClient] = React.useState(false);
   const [modalTypeArticle, setModalTypeArticle] = React.useState(false);
-
+  const [modalTypeStorage, setModalTypeStorage] = React.useState(false);
   React.useEffect(() => {
     if (location.pathname === '/articlemaster') {
       setModalTypeArticle(!modalTypeArticle);
@@ -93,10 +96,17 @@ export default function AddModal({ close }) {
     if (location.pathname === '/clientmaster') {
       setModalTypeClient(!modalTypeClient);
     }
+    if (location.pathname === '/storagesystem') {
+      setModalTypeStorage(!modalTypeStorage);
+    }
   }, []);
 
   async function handleClickClient() {
-    await doPostClient(name);
+    await doPostClient(clientName);
+    close();
+  }
+  async function handleOnClickStorage() {
+    await doPostStorage(storage);
     close();
   }
 
@@ -165,10 +175,28 @@ export default function AddModal({ close }) {
               placeholder="Please Enter ClientName"
               maxLength="24"
               onChange={(event) => {
-                setName(event.target.value);
+                setClientName(event.target.value);
               }}
             ></InputContainer>
             <Button onClick={handleClickClient}>CREATE</Button>
+          </Modal>
+        </ModalContainer>
+      ) : null}
+      {loadingStorage && 'loading...'}
+      {errorStorage && 'Error'}
+      {modalTypeStorage ? (
+        <ModalContainer>
+          <Modal>
+            <CloseImage src={Close} onClick={close}></CloseImage>
+            <Title>Create New Storage</Title>
+            <InputContainer
+              placeholder="Please Enter StorageLocation"
+              maxLength="6"
+              onChange={(event) => {
+                setStorage(event.target.value);
+              }}
+            ></InputContainer>
+            <Button onClick={handleOnClickStorage}>CREATE</Button>
           </Modal>
         </ModalContainer>
       ) : null}

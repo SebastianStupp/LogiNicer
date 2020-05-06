@@ -1,12 +1,12 @@
 import React from 'react';
 import { deleteArticle } from '../api/articles';
 
-export default function useDeleteClient(articleId) {
+export default function useDeleteClient() {
   const [deletedArticle, setDeletedArticle] = React.useState(null);
   const [errorArticle, setErrorArticle] = React.useState(false);
   const [loadingArticle, setLoadingArticle] = React.useState(true);
 
-  async function doDeleteArticle() {
+  async function doDeleteArticle(articleId) {
     try {
       setLoadingArticle(true);
       const deletedArticle = await deleteArticle(articleId);

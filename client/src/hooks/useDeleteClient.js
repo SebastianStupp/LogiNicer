@@ -1,12 +1,12 @@
 import React from 'react';
 import { deleteClient } from '../api/clients';
 
-export default function useDeleteClient(clientId) {
+export default function useDeleteClient() {
   const [deletedClient, setDeletedClient] = React.useState(null);
   const [error, setError] = React.useState(false);
   const [loading, setLoading] = React.useState(true);
 
-  async function doDeleteClient() {
+  async function doDeleteClient(clientId) {
     try {
       setLoading(true);
       const deletedClient = await deleteClient(clientId);

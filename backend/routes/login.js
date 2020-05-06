@@ -4,7 +4,7 @@ let Login = require('../models/login');
 router.route('/').get((request, response) => {
   Login.find()
     .then((logins) => response.json(logins))
-    .catch((err) => response.json('Error:' + err));
+    .catch((err) => response.status(500).json('Error:' + err));
 });
 
 router.route('/add').post((request, response) => {
@@ -16,7 +16,7 @@ router.route('/add').post((request, response) => {
   newLogin
     .save()
     .then(() => response.json('New User!'))
-    .catch((err) => response.json('Error:' + err));
+    .catch((err) => response.status(500).json('Error:' + err));
 });
 
 module.exports = router;

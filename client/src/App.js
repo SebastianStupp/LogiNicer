@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import Menu from './pages/Menu';
 import ClientMasterPage from './pages/ClientMasterPage';
 import ArticleMasterPage from './pages/ArticleMasterPage';
+import StorageMasterPage from './pages/StorageMasterPage';
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
           </Route>
           <Route path="/articlemaster">
             <ArticleMasterPage />
+          </Route>
+          <Route path="/storagesystem">
+            <StorageMasterPage />
           </Route>
         </Switch>
       </Router>

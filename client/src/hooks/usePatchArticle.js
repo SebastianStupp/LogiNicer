@@ -8,7 +8,7 @@ export default function usePatchArticle() {
 
   async function doPatchArticle(
     articleId,
-    articlenumber,
+    articleNumber,
     client,
     bbd,
     pzn,
@@ -17,7 +17,7 @@ export default function usePatchArticle() {
     try {
       const article = await patchArticle(
         articleId,
-        articlenumber,
+        articleNumber,
         client,
         bbd,
         pzn,

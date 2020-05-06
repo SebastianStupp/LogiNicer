@@ -4,6 +4,7 @@ import { keyframes } from '@emotion/core';
 import Close from '../assets/close.svg';
 import usePatchClient from '../hooks/usePatchClient';
 import usePatchArticle from '../hooks/usePatchArticle';
+import usePatchStorage from '../hooks/usePatchStorage';
 import Button from '../components/Button';
 import Input from '../components/Input';
 import Checkbox from '../components/Checkbox';
@@ -70,6 +71,11 @@ const InputContainer = styled(Input)`
   font-size: 1.1rem;
   margin: 20px;
 `;
+const StorageContainer = styled(Input)`
+  text-align: center;
+  font-size: 1.1rem;
+  margin: 20px;
+`;
 
 const CheckboxContainer = styled.div`
   display: flex;
@@ -87,18 +93,22 @@ export default function ChangeModal({
   bbd,
   pzn,
   ean,
+  storageId,
+  storage,
 }) {
-  const [{ loading, errormsg }, doPatchClient] = usePatchClient();
+  const [{ loading, error }, doPatchClient] = usePatchClient();
   const [clientName, setClientName] = React.useState(client);
-  const [articlenumber, setArticleNumber] = React.useState(article);
+  const [storageName, setStorageName] = React.useState(storage);
+  const [articleNumber, setArticleNumber] = React.useState(article);
   const [bbdValue, setBbdValue] = React.useState(bbd);
   const [pznValue, setPznValue] = React.useState(pzn);
   const [eanValue, setEanValue] = React.useState(ean);
   const [modalTypeClient, setModalTypeClient] = React.useState(false);
   const [modalTypeArticle, setModalTypeArticle] = React.useState(false);
-  const [{ loadingArticle, errorArticle }, doPatchArticle] = usePatchArticle(
-    articleId
-  );
+  const [modalTypeStorage, setModalTypeStorage] = React.useState(false);
+  const [{ loadingArticle, errorArticle }, doPatchArticle] = usePatchArticle();
+  const [{ loadingStorage, errorStorage }, doPatchStorage] = usePatchStorage();
+
   const location = useLocation();
   React.useEffect(() => {
     if (location.pathname === '/articlemaster') {
@@ -107,88 +117,121 @@ export default function ChangeModal({
     if (location.pathname === '/clientmaster') {
       setModalTypeClient(!modalTypeClient);
     }
+    if (location.pathname === '/storagesystem') {
+      setModalTypeStorage(!modalTypeStorage);
+    }
   }, []);
 
   async function handleOnClickClient() {
     await doPatchClient(clientId, clientName);
     close();
   }
+  async function handleOnClickStorage() {
+    await doPatchStorage(storageId, storageName);
+    close();
+  }
 
   async function handleOnClickArticle() {
-    await doPatchArticle(articleId, articlenumber, client, bbd, pzn, ean);
+    await doPatchArticle(articleId, articleNumber, client, bbd, pzn, ean);
     close();
   }
 
   function handleClientChange(clientName) {
     setClientName(clientName);
   }
+
   return (
     <>
-      {loadingArticle}
-      {errorArticle && 'Error'}
       {modalTypeArticle ? (
-        <ModalContainer>
-          <Modal>
-            <CloseImage src={Close} onClick={close}></CloseImage>
-            <Title>Change Article</Title>
-            <ClientDropdown
-              value={clientName}
-              optionTitle="Please Select Client"
-              onContentChange={handleClientChange}
-            ></ClientDropdown>
-            <InputContainer
-              value={articlenumber}
-              maxLength="24"
-              onChange={(event) => {
-                setArticleNumber(event.target.value);
-              }}
-            ></InputContainer>
-            <CheckboxContainer>
-              <Checkbox
-                checkStatus={bbd ? 'checked' : null}
-                option="Best-Before-Date"
-                checked={() => {
-                  setBbdValue(!bbdValue);
+        <>
+          {loadingArticle && 'loading...'}
+          {errorArticle && 'Error'}
+          <ModalContainer>
+            <Modal>
+              <CloseImage src={Close} onClick={close}></CloseImage>
+              <Title>Change Article</Title>
+              <ClientDropdown
+                value={clientName}
+                optionTitle="Please Select Client"
+                onContentChange={handleClientChange}
+              ></ClientDropdown>
+              <InputContainer
+                value={articleNumber}
+                maxLength="24"
+                onChange={(event) => {
+                  setArticleNumber(event.target.value);
                 }}
-              ></Checkbox>
-              <Checkbox
-                checkStatus={pzn ? 'checked' : null}
-                option="PZN Number"
-                checked={() => {
-                  setPznValue(!pznValue);
-                }}
-              ></Checkbox>
-              <Checkbox
-                checkStatus={ean ? 'checked' : null}
-                option="EAN Number"
-                checked={() => {
-                  setEanValue(!eanValue);
-                }}
-              ></Checkbox>
-            </CheckboxContainer>
-            <CreateArticleButton onClick={handleOnClickArticle}>
-              CHANGE
-            </CreateArticleButton>
-          </Modal>
-        </ModalContainer>
+              ></InputContainer>
+              <CheckboxContainer>
+                <Checkbox
+                  checkStatus={bbd ? 'checked' : null}
+                  option="Best-Before-Date"
+                  checked={() => {
+                    setBbdValue(!bbdValue);
+                  }}
+                ></Checkbox>
+                <Checkbox
+                  checkStatus={pzn ? 'checked' : null}
+                  option="PZN Number"
+                  checked={() => {
+                    setPznValue(!pznValue);
+                  }}
+                ></Checkbox>
+                <Checkbox
+                  checkStatus={ean ? 'checked' : null}
+                  option="EAN Number"
+                  checked={() => {
+                    setEanValue(!eanValue);
+                  }}
+                ></Checkbox>
+              </CheckboxContainer>
+              <CreateArticleButton onClick={handleOnClickArticle}>
+                CHANGE
+              </CreateArticleButton>
+            </Modal>
+          </ModalContainer>
+        </>
       ) : null}
-      {loading}
-      {errormsg && 'Error'}
+
       {modalTypeClient ? (
-        <ModalContainer>
-          <Modal>
-            <CloseImage src={Close} onClick={close}></CloseImage>
-            <Title>Change Client</Title>
-            <ClientInput
-              value={clientName}
-              maxLength="24"
-              onChange={(event) => {
-                setClientName(event.target.value);
-              }}
-            ></ClientInput>
-            <Button onClick={handleOnClickClient}>CHANGE</Button>
-          </Modal>
-        </ModalContainer>
+        <>
+          {loading && 'loading...'}
+          {error && 'Error'}
+          <ModalContainer>
+            <Modal>
+              <CloseImage src={Close} onClick={close}></CloseImage>
+              <Title>Change Client</Title>
+              <ClientInput
+                value={clientName}
+                maxLength="24"
+                onChange={(event) => {
+                  setClientName(event.target.value);
+                }}
+              ></ClientInput>
+              <Button onClick={handleOnClickClient}>CHANGE</Button>
+            </Modal>
+          </ModalContainer>
+        </>
+      ) : null}
+      {modalTypeStorage ? (
+        <>
+          {loadingStorage}
+          {errorStorage && 'Error'}
+          <ModalContainer>
+            <Modal>
+              <CloseImage src={Close} onClick={close}></CloseImage>
+              <Title>Change Storage</Title>
+              <StorageContainer
+                value={storageName}
+                maxLength="24"
+                onChange={(event) => {
+                  setStorageName(event.target.value);
+                }}
+              ></StorageContainer>
+              <Button onClick={handleOnClickStorage}>CHANGE</Button>
+            </Modal>
+          </ModalContainer>
+        </>
       ) : null}
     </>
   );
@@ -203,4 +246,6 @@ ChangeModal.propTypes = {
   bbd: PropTypes.string,
   pzn: PropTypes.string,
   ean: PropTypes.string,
+  storageId: PropTypes.string,
+  storage: PropTypes.string,
 };

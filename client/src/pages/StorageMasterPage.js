@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import Header from '../components/Header';
 import AddButton from '../components/AddButton';
 import ListCard from '../components/ListCard';
-import useGetArticles from '../hooks/useGetArticles';
+import useGetStorages from '../hooks/useGetStorages';
 import DeleteModal from '../components/DeleteModal';
 import ChangeModal from '../components/ChangeModal';
 import AddModal from '../components/AddModal';
@@ -22,50 +22,36 @@ const MainContainer = styled.div`
   flex-grow: 1;
 `;
 
-export default function ArticleMasterPage() {
-  const [{ articles, error, loading }, doGetArticles] = useGetArticles();
+export default function ClientMasterPage() {
+  const [{ storages, error, loading }, doGetStorages] = useGetStorages();
   const [showDeleteModal, setShowDeleteModal] = React.useState(false);
   const [showAddModal, setAddModal] = React.useState(false);
   const [showChangeModal, setShowChangeModal] = React.useState(false);
-  const [articleId, setArticleId] = React.useState(null);
-  const [articleNumber, setArticleNumber] = React.useState(null);
-  const [client, setClient] = React.useState(null);
-  const [bbd, setBbd] = React.useState(false);
-  const [pzn, setPzn] = React.useState(false);
-  const [ean, setEan] = React.useState(false);
+  const [storageId, setStorageId] = React.useState(null);
+  const [storage, setStorage] = React.useState(null);
 
-  const handleChangeOnClick = (
-    articleId,
-    articleNumber,
-    client,
-    bbd,
-    pzn,
-    ean
-  ) => {
-    setArticleId(articleId);
-    setArticleNumber(articleNumber);
-    setClient(client);
-    setBbd(bbd);
-    setPzn(pzn);
-    setEan(ean);
+  const handleChangeOnClick = (storageId, storage) => {
+    setStorageId(storageId);
+    setStorage(storage);
+    console.log(storage, storageId, storages);
     setShowChangeModal(!showChangeModal);
   };
 
-  const handleRemoveOnClick = (articleId, articleNumber) => {
-    setArticleId(articleId);
-    setArticleNumber(articleNumber);
-
+  const handleRemoveOnClick = (storageId, storage) => {
+    setStorageId(storageId);
+    setStorage(storage);
+    console.log(storage);
     setShowDeleteModal(!showDeleteModal);
   };
 
   const onClickCloseChangeModal = () => {
     setShowChangeModal(!showChangeModal);
-    doGetArticles();
+    doGetStorages();
   };
 
   const onClickCloseAddModal = () => {
     setAddModal(!showAddModal);
-    doGetArticles();
+    doGetStorages();
   };
 
   const onClickOpenAddModal = () => {
@@ -74,39 +60,34 @@ export default function ArticleMasterPage() {
 
   const onClickCloseDeleteModal = () => {
     setShowDeleteModal(!showDeleteModal);
-    doGetArticles();
+    doGetStorages();
   };
-
   return (
     <PageContainer>
       {showAddModal ? <AddModal close={onClickCloseAddModal}></AddModal> : null}
       {showDeleteModal ? (
         <DeleteModal
           close={onClickCloseDeleteModal}
-          articleId={articleId}
-          article={articleNumber}
+          storageId={storageId}
+          storage={storage}
         ></DeleteModal>
       ) : null}
       {showChangeModal ? (
         <ChangeModal
           close={onClickCloseChangeModal}
-          articleId={articleId}
-          article={articleNumber}
-          client={client}
-          bbd={bbd}
-          pzn={pzn}
-          ean={ean}
+          storageId={storageId}
+          storage={storage}
         ></ChangeModal>
       ) : null}
       <Header type="menu"></Header>
       <MainContainer>
         {loading && 'loading'}
         {error && 'Error'}
-        {articles && (
+        {storages && (
           <ListCard
-            content={articles}
-            change={handleChangeOnClick}
+            content={storages}
             remove={handleRemoveOnClick}
+            change={handleChangeOnClick}
           ></ListCard>
         )}
       </MainContainer>

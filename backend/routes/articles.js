@@ -4,14 +4,14 @@ const Article = require('../models/articles');
 router.get('/', (request, response) => {
   Article.find()
     .then((articles) => response.json(articles))
-    .catch((err) => response.json('Error:' + err));
+    .catch((err) => response.status(500).json('Error:' + err));
 });
 
 router.post('/', (request, response) => {
-  const { articlenumber, client, bbd, pzn, ean, time } = request.body;
+  const { articleNumber, client, bbd, pzn, ean, time } = request.body;
 
   const newArticle = new Article({
-    articlenumber,
+    articleNumber,
     client,
     bbd,
     pzn,
@@ -22,7 +22,7 @@ router.post('/', (request, response) => {
   newArticle
     .save()
     .then((newArticle) => response.json(newArticle))
-    .catch((err) => response.json('Error:' + err));
+    .catch((err) => response.status(500).json('Error:' + err));
 });
 
 router.patch('/:id', (request, response) => {
@@ -30,7 +30,7 @@ router.patch('/:id', (request, response) => {
     { _id: request.params.id },
     {
       $set: {
-        articlenumber: request.body.articlenumber,
+        articleNumber: request.body.articleNumber,
         client: request.body.client,
         bbd: request.body.bbd,
         pzn: request.body.pzn,
@@ -40,13 +40,13 @@ router.patch('/:id', (request, response) => {
     { new: true }
   )
     .then((clientname) => response.json(clientname))
-    .catch((err) => response.json('Error:' + err));
+    .catch((err) => response.status(500).json('Error:' + err));
 });
 
 router.delete('/:id', (request, response) => {
   Article.findByIdAndRemove({ _id: request.params.id })
     .then((article) => response.json(article))
-    .catch((err) => response.json('Error:' + err));
+    .catch((err) => response.status(500).json('Error:' + err));
 });
 
 module.exports = router;

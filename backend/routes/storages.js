@@ -1,34 +1,33 @@
 const router = require('express').Router();
-const Client = require('../models/clients');
+const Storage = require('../models/storages');
 
 router.get('/', (request, response) => {
-  Client.find()
-    .then((clients) => response.json(clients))
+  Storage.find()
+    .then((storages) => response.json(storages))
     .catch((err) => response.status(500).json('Error:' + err));
 });
 
 router.post('/', (request, response) => {
-  const clientname = request.body.clientname;
-
-  const clientCollection = new Client({ clientname });
-  clientCollection
+  const storage = request.body.storage;
+  const storageCollection = new Storage({ storage });
+  storageCollection
     .save()
-    .then((clientname) => response.json(clientname))
+    .then((storage) => response.json(storage))
     .catch((err) => response.status(500).json('Error:' + err));
 });
 
 router.delete('/:id', (request, response) => {
-  Client.findByIdAndRemove({ _id: request.params.id })
-    .then((client) => response.json(client))
+  Storage.findByIdAndRemove({ _id: request.params.id })
+    .then((storage) => response.json(storage))
     .catch((err) => response.status(500).json('Error:' + err));
 });
 
 router.patch('/:id', (request, response) => {
-  Client.findByIdAndUpdate(
+  Storage.findByIdAndUpdate(
     { _id: request.params.id },
-    { $set: { clientname: request.body.clientname } }
+    { $set: { storage: request.body.storage } }
   )
-    .then((clientname) => response.json(clientname))
+    .then((storage) => response.json(storage))
     .catch((err) => response.status(500).json('Error:' + err));
 });
 

@@ -46,7 +46,9 @@ const DeleteSymbolImage = styled.img`
 export default function ListCard({ change, content, remove }) {
   return content.map((data) => (
     <ListCardContainer key={data._id}>
-      <ListCardContent>{data.clientname || data.articlenumber}</ListCardContent>
+      <ListCardContent>
+        {data.clientname || data.articleNumber || data.storage}
+      </ListCardContent>
       <ListSymbolContainer>
         <EditSymbolImage
           src={Edit}
@@ -54,7 +56,11 @@ export default function ListCard({ change, content, remove }) {
           onClick={() =>
             change(
               data._id,
-              data.clientname || data.articlenumber,
+              data.clientname
+                ? data.clientname
+                : data.storage
+                ? data.storage
+                : data.articleNumber,
               data.client,
               data.bbd,
               data.pzn,
@@ -66,7 +72,10 @@ export default function ListCard({ change, content, remove }) {
           src={Delete}
           alt="Delete Symbol"
           onClick={() =>
-            remove(data._id, data.clientname || data.articlenumber)
+            remove(
+              data._id,
+              data.clientname || data.articleNumber || data.storage
+            )
           }
         ></DeleteSymbolImage>
       </ListSymbolContainer>

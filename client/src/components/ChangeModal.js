@@ -106,12 +106,8 @@ export default function ChangeModal({
   const [modalTypeClient, setModalTypeClient] = React.useState(false);
   const [modalTypeArticle, setModalTypeArticle] = React.useState(false);
   const [modalTypeStorage, setModalTypeStorage] = React.useState(false);
-  const [{ loadingArticle, errorArticle }, doPatchArticle] = usePatchArticle(
-    articleId
-  );
-  const [{ loadingStorage, errorStorage }, doPatchStorage] = usePatchStorage(
-    storageId
-  );
+  const [{ loadingArticle, errorArticle }, doPatchArticle] = usePatchArticle();
+  const [{ loadingStorage, errorStorage }, doPatchStorage] = usePatchStorage();
 
   const location = useLocation();
   React.useEffect(() => {

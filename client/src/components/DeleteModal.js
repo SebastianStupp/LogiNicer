@@ -65,13 +65,15 @@ export default function DeleteModal({
   storageId,
   storage,
 }) {
-  const [{ loading, error }, doDeleteClient] = useDeleteClient(clientId);
-  const [{ loadingArticle, errorArticle }, doDeleteArticle] = useDeleteArticle(
-    articleId
-  );
-  const [{ loadingStorage, errorStorage }, doDeleteStorage] = useDeleteStorage(
-    storageId
-  );
+  const [{ loading, error }, doDeleteClient] = useDeleteClient();
+  const [
+    { loadingArticle, errorArticle },
+    doDeleteArticle,
+  ] = useDeleteArticle();
+  const [
+    { loadingStorage, errorStorage },
+    doDeleteStorage,
+  ] = useDeleteStorage();
   const [modalTypeClient, setModalTypeClient] = React.useState(false);
   const [modalTypeArticle, setModalTypeArticle] = React.useState(false);
   const [modalTypeStorage, setModalTypeStorage] = React.useState(false);

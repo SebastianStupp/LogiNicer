@@ -42,6 +42,6 @@ export async function patchArticle(
     },
     body: JSON.stringify({ articlenumber, client, bbd, pzn, ean }),
   });
-  const createArticle = await response.json();
-  return createArticle;
+  const patchArticle = await response.json();
+  return patchArticle;
 }

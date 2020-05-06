@@ -35,6 +35,6 @@ export async function patchClient(clientId, clientname) {
     },
     body: JSON.stringify({ clientname }),
   });
-  const createClient = await response.json();
-  return createClient;
+  const patchClient = await response.json();
+  return patchClient;
 }

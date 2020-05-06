@@ -69,18 +69,15 @@ export default function DeleteModal({
   const [modalTypeClient, setModalTypeClient] = React.useState(false);
   const [modalTypeArticle, setModalTypeArticle] = React.useState(false);
   const location = useLocation();
-  function DeclareModalType() {
-    React.useEffect(() => {
-      if (location.pathname === '/articlemaster') {
-        setModalTypeArticle(!modalTypeArticle);
-      }
 
-      if (location.pathname === '/clientmaster') {
-        setModalTypeClient(!modalTypeClient);
-      }
-    }, []);
-  }
-  DeclareModalType();
+  React.useEffect(() => {
+    if (location.pathname === '/articlemaster') {
+      setModalTypeArticle(!modalTypeArticle);
+    }
+    if (location.pathname === '/clientmaster') {
+      setModalTypeClient(!modalTypeClient);
+    }
+  }, []);
 
   async function handleonClickClient() {
     await doDeleteClient(clientId);

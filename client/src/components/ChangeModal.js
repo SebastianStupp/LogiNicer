@@ -100,18 +100,14 @@ export default function ChangeModal({
     articleId
   );
   const location = useLocation();
-  function DeclareModalType() {
-    React.useEffect(() => {
-      if (location.pathname === '/articlemaster') {
-        setModalTypeArticle(!modalTypeArticle);
-      }
-
-      if (location.pathname === '/clientmaster') {
-        setModalTypeClient(!modalTypeClient);
-      }
-    }, []);
-  }
-  DeclareModalType();
+  React.useEffect(() => {
+    if (location.pathname === '/articlemaster') {
+      setModalTypeArticle(!modalTypeArticle);
+    }
+    if (location.pathname === '/clientmaster') {
+      setModalTypeClient(!modalTypeClient);
+    }
+  }, []);
 
   async function handleOnClickClient() {
     await doPatchClient(clientId, clientName);

@@ -8,12 +8,7 @@ router.get('/', (request, response) => {
 });
 
 router.post('/', (request, response) => {
-  const articlenumber = request.body.articlenumber;
-  const client = request.body.client;
-  const bbd = request.body.bbd;
-  const pzn = request.body.pzn;
-  const ean = request.body.ean;
-  const time = request.body.time;
+  const { articlenumber, client, bbd, pzn, ean, time } = request.body;
 
   const newArticle = new Article({
     articlenumber,

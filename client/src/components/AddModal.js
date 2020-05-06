@@ -86,18 +86,14 @@ export default function AddModal({ close }) {
   const [modalTypeClient, setModalTypeClient] = React.useState(false);
   const [modalTypeArticle, setModalTypeArticle] = React.useState(false);
 
-  function DeclareModalType() {
-    React.useEffect(() => {
-      if (location.pathname === '/articlemaster') {
-        setModalTypeArticle(!modalTypeArticle);
-      }
-
-      if (location.pathname === '/clientmaster') {
-        setModalTypeClient(!modalTypeClient);
-      }
-    }, []);
-  }
-  DeclareModalType();
+  React.useEffect(() => {
+    if (location.pathname === '/articlemaster') {
+      setModalTypeArticle(!modalTypeArticle);
+    }
+    if (location.pathname === '/clientmaster') {
+      setModalTypeClient(!modalTypeClient);
+    }
+  }, []);
 
   async function handleClickClient() {
     await doPostClient(name);
@@ -114,7 +110,7 @@ export default function AddModal({ close }) {
   }
   return (
     <>
-      {loadingArticle}
+      {loadingArticle && 'Loading'}
       {errorArticle && 'Error'}
       {modalTypeArticle ? (
         <ModalContainer>

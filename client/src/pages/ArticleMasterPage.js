@@ -28,18 +28,33 @@ export default function ArticleMasterPage() {
   const [showAddModal, setAddModal] = React.useState(false);
   const [showChangeModal, setShowChangeModal] = React.useState(false);
   const [articleId, setArticleId] = React.useState(null);
-  const [article, setArticle] = React.useState(null);
+  const [articlenumber, setArticleNumber] = React.useState(null);
+  const [client, setClient] = React.useState(null);
+  const [bbd, setBbd] = React.useState(false);
+  const [pzn, setPzn] = React.useState(false);
+  const [ean, setEan] = React.useState(false);
 
-  const handleChangeOnClick = (articleId, article) => {
+  const handleChangeOnClick = (
+    articleId,
+    articlenumber,
+    client,
+    bbd,
+    pzn,
+    ean
+  ) => {
     setArticleId(articleId);
-    setArticle(article);
-
+    setArticleNumber(articlenumber);
+    setClient(client);
+    setBbd(bbd);
+    setPzn(pzn);
+    setEan(ean);
     setShowChangeModal(!showChangeModal);
   };
 
-  const handleRemoveOnClick = (articleId, article) => {
+  const handleRemoveOnClick = (articleId, articlenumber) => {
     setArticleId(articleId);
-    setArticle(article);
+    setArticleNumber(articlenumber);
+
     setShowDeleteModal(!showDeleteModal);
   };
 
@@ -68,15 +83,19 @@ export default function ArticleMasterPage() {
       {showDeleteModal ? (
         <DeleteModal
           close={onClickCloseDeleteModal}
-          clientId={articleId}
-          client={article}
+          articleId={articleId}
+          article={articlenumber}
         ></DeleteModal>
       ) : null}
       {showChangeModal ? (
         <ChangeModal
           close={onClickCloseChangeModal}
-          clientId={articleId}
-          client={article}
+          articleId={articleId}
+          article={articlenumber}
+          client={client}
+          bbd={bbd}
+          pzn={pzn}
+          ean={ean}
         ></ChangeModal>
       ) : null}
       <Header type="menu"></Header>

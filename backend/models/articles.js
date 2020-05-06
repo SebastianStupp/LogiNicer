@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const articleSchema = new Schema({
-  articlenumber: String,
-  client: String,
+  articlenumber: { type: String, required: true },
+  client: { type: String, required: true },
   bbd: Boolean,
   pzn: Boolean,
   ean: Boolean,

@@ -4,7 +4,7 @@ const Storage = require('../models/storages');
 router.get('/', (request, response) => {
   Storage.find()
     .then((storages) => response.json(storages))
-    .catch((err) => response.json('Error:' + err));
+    .catch((err) => response.status(500).json('Error:' + err));
 });
 
 router.post('/', (request, response) => {
@@ -13,13 +13,13 @@ router.post('/', (request, response) => {
   storageCollection
     .save()
     .then((storage) => response.json(storage))
-    .catch((err) => response.json('Error:' + err));
+    .catch((err) => response.status(500).json('Error:' + err));
 });
 
 router.delete('/:id', (request, response) => {
   Storage.findByIdAndRemove({ _id: request.params.id })
     .then((storage) => response.json(storage))
-    .catch((err) => response.json('Error:' + err));
+    .catch((err) => response.status(500).json('Error:' + err));
 });
 
 router.patch('/:id', (request, response) => {
@@ -28,7 +28,7 @@ router.patch('/:id', (request, response) => {
     { $set: { storage: request.body.storage } }
   )
     .then((storage) => response.json(storage))
-    .catch((err) => response.json('Error:' + err));
+    .catch((err) => response.status(500).json('Error:' + err));
 });
 
 module.exports = router;

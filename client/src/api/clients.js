@@ -23,8 +23,8 @@ export async function postClient(clientname) {
     },
     body: JSON.stringify({ clientname }),
   });
-  const createClient = await response.json();
-  return createClient;
+  const createdClient = await response.json();
+  return createdClient;
 }
 
 export async function patchClient(clientId, clientname) {
@@ -35,6 +35,6 @@ export async function patchClient(clientId, clientname) {
     },
     body: JSON.stringify({ clientname }),
   });
-  const patchClient = await response.json();
-  return patchClient;
+  const patchedClient = await response.json();
+  return patchedClient;
 }

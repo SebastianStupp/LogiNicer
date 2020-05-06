@@ -12,8 +12,8 @@ export async function postArticle(articleNumber, client, bbd, pzn, ean) {
     },
     body: JSON.stringify({ articleNumber, client, bbd, pzn, ean }),
   });
-  const createArticle = await response.json();
-  return createArticle;
+  const createdArticle = await response.json();
+  return createdArticle;
 }
 
 export async function deleteArticle(articleId) {
@@ -42,6 +42,6 @@ export async function patchArticle(
     },
     body: JSON.stringify({ articleNumber, client, bbd, pzn, ean }),
   });
-  const patchArticle = await response.json();
-  return patchArticle;
+  const patchedArticle = await response.json();
+  return patchedArticle;
 }

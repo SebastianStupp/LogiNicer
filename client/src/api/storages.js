@@ -23,8 +23,8 @@ export async function postStorage(storage) {
     },
     body: JSON.stringify({ storage }),
   });
-  const createStorage = await response.json();
-  return createStorage;
+  const createdStorage = await response.json();
+  return createdStorage;
 }
 
 export async function patchStorage(storageId, storage) {
@@ -35,6 +35,6 @@ export async function patchStorage(storageId, storage) {
     },
     body: JSON.stringify({ storage }),
   });
-  const patchStorage = await response.json();
-  return patchStorage;
+  const patchedStorage = await response.json();
+  return patchedStorage;
 }

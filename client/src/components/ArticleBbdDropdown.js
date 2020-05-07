@@ -15,7 +15,7 @@ const DropdownSelection = styled.select`
 `;
 
 export default function ArticleBbdDropdown({ optionTitle, onContentChange }) {
-  const [dropdownValue, setdropdownValue] = React.useState('');
+  const [dropdownValue, setDropdownValue] = React.useState('');
   const [{ articles, loading, error }] = useGetArticles();
   React.useEffect(() => {
     if (dropdownValue) {
@@ -24,7 +24,7 @@ export default function ArticleBbdDropdown({ optionTitle, onContentChange }) {
   }, [dropdownValue]);
 
   const handleChange = (event) => {
-    setdropdownValue(event.target.value);
+    setDropdownValue(event.target.value);
   };
 
   return (

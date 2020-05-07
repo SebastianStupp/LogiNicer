@@ -15,7 +15,7 @@ const DropdownSelection = styled.select`
 `;
 
 export default function StorageDropdown({ optionTitle, onContentChange }) {
-  const [dropdownValue, setdropdownValue] = React.useState('');
+  const [dropdownValue, setDropdownValue] = React.useState('');
   const [{ storages, loading, error }] = useGetStorages();
 
   React.useEffect(() => {
@@ -25,7 +25,7 @@ export default function StorageDropdown({ optionTitle, onContentChange }) {
   }, [dropdownValue]);
 
   const handleChange = (event) => {
-    setdropdownValue(event.target.value);
+    setDropdownValue(event.target.value);
   };
 
   return (

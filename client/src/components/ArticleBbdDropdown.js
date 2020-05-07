@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import React from 'react';
-import useGetStorages from '../hooks/useGetStorages';
+import useGetArticles from '../hooks/useGetArticles';
 import PropTypes from 'prop-types';
 
 const DropdownSelection = styled.select`
@@ -14,10 +14,9 @@ const DropdownSelection = styled.select`
   text-align-last: center;
 `;
 
-export default function StorageDropdown({ optionTitle, onContentChange }) {
+export default function ArticleBbdDropdown({ optionTitle, onContentChange }) {
   const [dropdownValue, setDropdownValue] = React.useState('');
-  const [{ storages, loading, error }] = useGetStorages();
-
+  const [{ articles, loading, error }] = useGetArticles();
   React.useEffect(() => {
     if (dropdownValue) {
       onContentChange(dropdownValue);
@@ -35,17 +34,17 @@ export default function StorageDropdown({ optionTitle, onContentChange }) {
       </option>
       {loading && 'loading...'}
       {error && 'Fehler'}
-      {storages &&
-        storages.map((data) => (
-          <option value={data.storage} key={data._id}>
-            {data.storage}
+      {articles &&
+        articles.map((data) => (
+          <option value={data.bbd} key={data._id}>
+            {data.bbd}
           </option>
         ))}
       ;
     </DropdownSelection>
   );
 }
-StorageDropdown.propTypes = {
+ArticleBbdDropdown.propTypes = {
   optionTitle: PropTypes.string,
   onContentChange: PropTypes.func,
 };

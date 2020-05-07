@@ -15,7 +15,7 @@ const DropdownSelection = styled.select`
 `;
 
 export default function ClientDropdown({ optionTitle, onContentChange }) {
-  const [dropdownValue, setdropdownValue] = React.useState('');
+  const [dropdownValue, setDropdownValue] = React.useState('');
   const [{ clients, loading, error }] = useGetClients();
   React.useEffect(() => {
     if (dropdownValue) {
@@ -24,7 +24,7 @@ export default function ClientDropdown({ optionTitle, onContentChange }) {
   }, [dropdownValue]);
 
   const handleChange = (event) => {
-    setdropdownValue(event.target.value);
+    setDropdownValue(event.target.value);
   };
 
   return (

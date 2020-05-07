@@ -5,7 +5,7 @@ import Delete from '../assets/delete.svg';
 import PropTypes from 'prop-types';
 import { keyframes } from '@emotion/core';
 
-const menuItemAnimation = keyframes`
+const listItemAnimation = keyframes`
 from {
   transform: translateY(60%);
   opacity: 0
@@ -25,23 +25,23 @@ const ListCardContainer = styled.div`
   border: 1px solid black;
 
   :nth-of-type(1) {
-    animation: ${menuItemAnimation} 0.8s ease-in-out forwards 0.5s;
+    animation: ${listItemAnimation} 0.8s ease-in-out forwards 0.5s;
     opacity: 0;
   }
   :nth-of-type(2) {
-    animation: ${menuItemAnimation} 0.8s ease-in-out forwards 0.7s;
+    animation: ${listItemAnimation} 0.8s ease-in-out forwards 0.7s;
     opacity: 0;
   }
   :nth-of-type(3) {
-    animation: ${menuItemAnimation} 0.8s ease-in-out forwards 0.9s;
+    animation: ${listItemAnimation} 0.8s ease-in-out forwards 0.9s;
     opacity: 0;
   }
   :nth-of-type(4) {
-    animation: ${menuItemAnimation} 0.8s ease-in-out forwards 1.1s;
+    animation: ${listItemAnimation} 0.8s ease-in-out forwards 1.1s;
     opacity: 0;
   }
   :nth-of-type(5) {
-    animation: ${menuItemAnimation} 0.8s ease-in-out forwards 1.3s;
+    animation: ${listItemAnimation} 0.8s ease-in-out forwards 1.3s;
     opacity: 0;
   }
 `;

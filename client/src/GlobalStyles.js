@@ -18,6 +18,9 @@ function GlobalStyle() {
           font-family: 'Roboto', sans-serif;
           font-weight: 400;
           background: ${theme.colors.basic};
+          background-attachment: fixed;
+          background-repeat: no-repeat;
+          background-size: cover;
         }
       `}
     />

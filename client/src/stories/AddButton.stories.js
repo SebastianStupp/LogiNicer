@@ -4,4 +4,4 @@ export default {
   title: 'Button',
 };
 
-export const DefaultAddButton = () => <AddButton></AddButton>;
+export const DefaultAddButton = () => <AddButton />;

@@ -64,22 +64,22 @@ export default function ClientMasterPage() {
 
   return (
     <PageContainer>
-      {showAddModal ? <AddModal close={onClickCloseAddModal}></AddModal> : null}
+      {showAddModal ? <AddModal close={onClickCloseAddModal} /> : null}
       {showDeleteModal ? (
         <DeleteModal
           close={onClickCloseDeleteModal}
           clientId={clientId}
           client={client}
-        ></DeleteModal>
+        />
       ) : null}
       {showChangeModal ? (
         <ChangeModal
           close={onClickCloseChangeModal}
           clientId={clientId}
           client={client}
-        ></ChangeModal>
+        />
       ) : null}
-      <Header type="menu"></Header>
+      <Header type="menu" />
       <MainContainer>
         {loading && 'loading'}
         {error && 'Error'}
@@ -88,10 +88,10 @@ export default function ClientMasterPage() {
             content={clients}
             change={handleChangeOnClick}
             remove={handleRemoveOnClick}
-          ></ListCard>
+          />
         )}
       </MainContainer>
-      <AddButton modal={onClickOpenAddModal}></AddButton>
+      <AddButton modal={onClickOpenAddModal} />
     </PageContainer>
   );
 }

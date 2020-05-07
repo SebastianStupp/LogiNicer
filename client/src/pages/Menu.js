@@ -59,9 +59,9 @@ const CreateMenuOptions = () => {
 export default function DefaultMenu() {
   return (
     <>
-      <Header type="logout"></Header>
+      <Header type="logout" />
       <MenuContainer>
-        <CreateMenuOptions></CreateMenuOptions>
+        <CreateMenuOptions />
       </MenuContainer>
     </>
   );

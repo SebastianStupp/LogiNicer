@@ -125,38 +125,38 @@ export default function AddModal({ close }) {
       {modalTypeArticle ? (
         <ModalContainer>
           <Modal>
-            <CloseImage src={Close} onClick={close}></CloseImage>
+            <CloseImage src={Close} onClick={close} />
             <Title>Create New Article</Title>
             <ClientDropdown
               optionTitle="Please Select Client"
               onContentChange={handleClientChange}
-            ></ClientDropdown>
+            />
             <InputContainer
               placeholder="Please Enter ArticleName"
               maxLength="24"
               onChange={(event) => {
                 setArticleNumber(event.target.value);
               }}
-            ></InputContainer>
+            />
             <CheckboxContainer>
               <Checkbox
                 option="Best-Before-Date"
                 checked={() => {
                   setBbd(!bbd);
                 }}
-              ></Checkbox>
+              />
               <Checkbox
                 option="PZN Number"
                 checked={() => {
                   setPzn(!pzn);
                 }}
-              ></Checkbox>
+              />
               <Checkbox
                 option="EAN Number"
                 checked={() => {
                   setEan(!ean);
                 }}
-              ></Checkbox>
+              />
             </CheckboxContainer>
             <CreateArticleButton onClick={handleClickArticle}>
               CREATE
@@ -169,7 +169,7 @@ export default function AddModal({ close }) {
       {modalTypeClient ? (
         <ModalContainer>
           <Modal>
-            <CloseImage src={Close} onClick={close}></CloseImage>
+            <CloseImage src={Close} onClick={close} />
             <Title>Create New Client</Title>
             <InputContainer
               placeholder="Please Enter ClientName"
@@ -177,7 +177,7 @@ export default function AddModal({ close }) {
               onChange={(event) => {
                 setClientName(event.target.value);
               }}
-            ></InputContainer>
+            />
             <Button onClick={handleClickClient}>CREATE</Button>
           </Modal>
         </ModalContainer>
@@ -187,7 +187,7 @@ export default function AddModal({ close }) {
       {modalTypeStorage ? (
         <ModalContainer>
           <Modal>
-            <CloseImage src={Close} onClick={close}></CloseImage>
+            <CloseImage src={Close} onClick={close} />
             <Title>Create New Storage</Title>
             <InputContainer
               placeholder="Please Enter StorageLocation"
@@ -195,7 +195,7 @@ export default function AddModal({ close }) {
               onChange={(event) => {
                 setStorage(event.target.value);
               }}
-            ></InputContainer>
+            />
             <Button onClick={handleOnClickStorage}>CREATE</Button>
           </Modal>
         </ModalContainer>

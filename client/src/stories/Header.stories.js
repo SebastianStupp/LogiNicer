@@ -6,10 +6,6 @@ export default {
   component: DefaultHeading,
 };
 
-export const DefaultHeader = () => (
-  <DefaultHeading type="menu"></DefaultHeading>
-);
+export const DefaultHeader = () => <DefaultHeading type="menu" />;
 
-export const LogoutHeader = () => (
-  <DefaultHeading type="logout"></DefaultHeading>
-);
+export const LogoutHeader = () => <DefaultHeading type="logout" />;

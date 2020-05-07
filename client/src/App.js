@@ -8,18 +8,19 @@ import Menu from './pages/Menu';
 import ClientMasterPage from './pages/ClientMasterPage';
 import ArticleMasterPage from './pages/ArticleMasterPage';
 import StorageMasterPage from './pages/StorageMasterPage';
+import Inbound from './pages/Inbound';
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyles></GlobalStyles>
+      <GlobalStyles />
       <Router>
         <Switch>
           <Route exact path="/">
-            <Login></Login>
+            <Login />
           </Route>
           <Route path="/menu">
-            <Menu></Menu>
+            <Menu />
           </Route>
           <Route path="/clientmaster">
             <ClientMasterPage />
@@ -29,6 +30,9 @@ function App() {
           </Route>
           <Route path="/storagesystem">
             <StorageMasterPage />
+          </Route>
+          <Route path="/inbound">
+            <Inbound />
           </Route>
         </Switch>
       </Router>

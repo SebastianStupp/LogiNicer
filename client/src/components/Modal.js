@@ -44,8 +44,8 @@ export default function DefaultModal({ close }) {
     <>
       <ModalContainer>
         <Modal>
-          <CloseImage src={Close} onClick={close}></CloseImage>
-          <ModalContent></ModalContent>
+          <CloseImage src={Close} onClick={close} />
+          <ModalContent />
         </Modal>
       </ModalContainer>
     </>

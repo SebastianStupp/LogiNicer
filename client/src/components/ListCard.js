@@ -67,7 +67,7 @@ export default function ListCard({ change, content, remove }) {
               data.ean
             )
           }
-        ></EditSymbolImage>
+        />
         <DeleteSymbolImage
           src={Delete}
           alt="Delete Symbol"
@@ -77,7 +77,7 @@ export default function ListCard({ change, content, remove }) {
               data.clientname || data.articleNumber || data.storage
             )
           }
-        ></DeleteSymbolImage>
+        />
       </ListSymbolContainer>
     </ListCardContainer>
   ));

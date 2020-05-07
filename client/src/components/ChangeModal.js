@@ -148,20 +148,20 @@ export default function ChangeModal({
           {errorArticle && 'Error'}
           <ModalContainer>
             <Modal>
-              <CloseImage src={Close} onClick={close}></CloseImage>
+              <CloseImage src={Close} onClick={close} />
               <Title>Change Article</Title>
               <ClientDropdown
                 value={clientName}
                 optionTitle="Please Select Client"
                 onContentChange={handleClientChange}
-              ></ClientDropdown>
+              />
               <InputContainer
                 value={articleNumber}
                 maxLength="24"
                 onChange={(event) => {
                   setArticleNumber(event.target.value);
                 }}
-              ></InputContainer>
+              />
               <CheckboxContainer>
                 <Checkbox
                   checkStatus={bbd ? 'checked' : null}
@@ -169,21 +169,21 @@ export default function ChangeModal({
                   checked={() => {
                     setBbdValue(!bbdValue);
                   }}
-                ></Checkbox>
+                />
                 <Checkbox
                   checkStatus={pzn ? 'checked' : null}
                   option="PZN Number"
                   checked={() => {
                     setPznValue(!pznValue);
                   }}
-                ></Checkbox>
+                />
                 <Checkbox
                   checkStatus={ean ? 'checked' : null}
                   option="EAN Number"
                   checked={() => {
                     setEanValue(!eanValue);
                   }}
-                ></Checkbox>
+                />
               </CheckboxContainer>
               <CreateArticleButton onClick={handleOnClickArticle}>
                 CHANGE
@@ -199,7 +199,7 @@ export default function ChangeModal({
           {error && 'Error'}
           <ModalContainer>
             <Modal>
-              <CloseImage src={Close} onClick={close}></CloseImage>
+              <CloseImage src={Close} onClick={close} />
               <Title>Change Client</Title>
               <ClientInput
                 value={clientName}
@@ -207,7 +207,7 @@ export default function ChangeModal({
                 onChange={(event) => {
                   setClientName(event.target.value);
                 }}
-              ></ClientInput>
+              />
               <Button onClick={handleOnClickClient}>CHANGE</Button>
             </Modal>
           </ModalContainer>
@@ -219,7 +219,7 @@ export default function ChangeModal({
           {errorStorage && 'Error'}
           <ModalContainer>
             <Modal>
-              <CloseImage src={Close} onClick={close}></CloseImage>
+              <CloseImage src={Close} onClick={close} />
               <Title>Change Storage</Title>
               <StorageContainer
                 value={storageName}
@@ -227,7 +227,7 @@ export default function ChangeModal({
                 onChange={(event) => {
                   setStorageName(event.target.value);
                 }}
-              ></StorageContainer>
+              />
               <Button onClick={handleOnClickStorage}>CHANGE</Button>
             </Modal>
           </ModalContainer>

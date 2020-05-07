@@ -74,31 +74,31 @@ export default function Inbound() {
 
   return (
     <PageContainer>
-      <Header type="menu"></Header>
+      <Header type="menu" />
       <MainContainer>
         <Title>Store Your Items</Title>
         <ClientDropdown
           value={client}
           optionTitle="Please Select Client"
           onContentChange={handleClientChange}
-        ></ClientDropdown>
+        />
         <ArticleDropdown
           value={article}
           optionTitle="Please Select Article"
           onContentChange={handleArticleChange}
-        ></ArticleDropdown>
+        />
         <InputContainer
           defaultValue={amount}
           placeholder="Please Enter The Amount to Store"
           onChange={(event) => {
             setAmount(event.target.value);
           }}
-        ></InputContainer>
+        />
         <StorageDropdown
           value={storage}
           optionTitle="Please Select Storage"
           onContentChange={handleStorageChange}
-        ></StorageDropdown>
+        />
         <VariableContainer>
           <VariableInputContainer
             defaultValue={bbd}
@@ -106,21 +106,21 @@ export default function Inbound() {
             onChange={(event) => {
               setBbd(event.target.value);
             }}
-          ></VariableInputContainer>
+          />
           <VariableInputContainer
             defaultValue={pzn}
             placeholder="Enter PZN Number"
             onChange={(event) => {
               setPzn(event.target.value);
             }}
-          ></VariableInputContainer>
+          />
           <VariableInputContainer
             defaultValue={ean}
             placeholder="Enter EAN Number"
             onChange={(event) => {
               setEan(event.target.value);
             }}
-          ></VariableInputContainer>
+          />
         </VariableContainer>
         <Button>SAVE</Button>
       </MainContainer>

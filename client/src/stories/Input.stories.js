@@ -7,5 +7,5 @@ export default {
 };
 
 export const DefaultInput = () => (
-  <Input onChange={action('Change')} placeholder="Example"></Input>
+  <Input onChange={action('Change')} placeholder="Example" />
 );

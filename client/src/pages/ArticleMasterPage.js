@@ -79,13 +79,13 @@ export default function ArticleMasterPage() {
 
   return (
     <PageContainer>
-      {showAddModal ? <AddModal close={onClickCloseAddModal}></AddModal> : null}
+      {showAddModal ? <AddModal close={onClickCloseAddModal} /> : null}
       {showDeleteModal ? (
         <DeleteModal
           close={onClickCloseDeleteModal}
           articleId={articleId}
           article={articleNumber}
-        ></DeleteModal>
+        />
       ) : null}
       {showChangeModal ? (
         <ChangeModal
@@ -96,9 +96,9 @@ export default function ArticleMasterPage() {
           bbd={bbd}
           pzn={pzn}
           ean={ean}
-        ></ChangeModal>
+        />
       ) : null}
-      <Header type="menu"></Header>
+      <Header type="menu" />
       <MainContainer>
         {loading && 'loading'}
         {error && 'Error'}
@@ -107,10 +107,10 @@ export default function ArticleMasterPage() {
             content={articles}
             change={handleChangeOnClick}
             remove={handleRemoveOnClick}
-          ></ListCard>
+          />
         )}
       </MainContainer>
-      <AddButton modal={onClickOpenAddModal}></AddButton>
+      <AddButton modal={onClickOpenAddModal} />
     </PageContainer>
   );
 }

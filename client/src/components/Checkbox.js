@@ -21,7 +21,7 @@ export default function Checkbox({ option, checked, checkStatus }) {
         type="checkbox"
         onClick={checked}
         defaultChecked={checkStatus}
-      ></CheckboxInput>
+      />
       {option}
     </CheckBoxLabel>
   );

@@ -4,4 +4,4 @@ export default {
   title: 'Pages',
 };
 
-export const DefaultLogin = () => <Login></Login>;
+export const DefaultLogin = () => <Login />;

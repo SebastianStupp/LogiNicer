@@ -42,12 +42,12 @@ export default function Login() {
 
   return (
     <LoginContainer>
-      <LoginLogo src={LogoLarge}></LoginLogo>
+      <LoginLogo src={LogoLarge} />
       <LoginTitle>LogiNicer</LoginTitle>
-      <LoginInput placeholder="Username"></LoginInput>
-      <LoginInput placeholder="Password"></LoginInput>
+      <LoginInput placeholder="Username" />
+      <LoginInput placeholder="Password" />
       <Button onClick={HandleOnClick}>Login</Button>
-      <Truck></Truck>
+      <Truck />
     </LoginContainer>
   );
 }

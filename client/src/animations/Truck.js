@@ -24,5 +24,5 @@ const LogoTruck = styled.img`
 `;
 
 export default function Truck() {
-  return <LogoTruck src={SmallTruck}></LogoTruck>;
+  return <LogoTruck src={SmallTruck} />;
 }

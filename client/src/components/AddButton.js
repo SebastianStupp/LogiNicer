@@ -13,7 +13,7 @@ const AddButtonContainer = styled.div`
 export default function AddButton({ modal }) {
   return (
     <AddButtonContainer onClick={modal}>
-      <img src={Add} alt="A Plus Symbol"></img>
+      <img src={Add} alt="A Plus Symbol" />
     </AddButtonContainer>
   );
 }

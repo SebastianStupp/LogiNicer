@@ -64,22 +64,22 @@ export default function ClientMasterPage() {
   };
   return (
     <PageContainer>
-      {showAddModal ? <AddModal close={onClickCloseAddModal}></AddModal> : null}
+      {showAddModal ? <AddModal close={onClickCloseAddModal} /> : null}
       {showDeleteModal ? (
         <DeleteModal
           close={onClickCloseDeleteModal}
           storageId={storageId}
           storage={storage}
-        ></DeleteModal>
+        />
       ) : null}
       {showChangeModal ? (
         <ChangeModal
           close={onClickCloseChangeModal}
           storageId={storageId}
           storage={storage}
-        ></ChangeModal>
+        />
       ) : null}
-      <Header type="menu"></Header>
+      <Header type="menu" />
       <MainContainer>
         {loading && 'loading'}
         {error && 'Error'}
@@ -88,10 +88,10 @@ export default function ClientMasterPage() {
             content={storages}
             remove={handleRemoveOnClick}
             change={handleChangeOnClick}
-          ></ListCard>
+          />
         )}
       </MainContainer>
-      <AddButton modal={onClickOpenAddModal}></AddButton>
+      <AddButton modal={onClickOpenAddModal} />
     </PageContainer>
   );
 }

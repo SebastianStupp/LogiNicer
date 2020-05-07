@@ -5,4 +5,4 @@ export default {
   title: 'Pages',
 };
 
-export const Menu = () => <DefaultMenu></DefaultMenu>;
+export const Menu = () => <DefaultMenu />;

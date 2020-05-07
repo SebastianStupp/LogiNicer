@@ -112,7 +112,7 @@ export default function DeleteModal({
           {errorArticle && 'Error'}
           <ModalContainer>
             <Modal>
-              <CloseImage src={Close} onClick={close}></CloseImage>
+              <CloseImage src={Close} onClick={close} />
               <Title>{`Delete Article <${article}>?`}</Title>
               <Button onClick={handleonClickArticle}>Delete</Button>
             </Modal>
@@ -126,7 +126,7 @@ export default function DeleteModal({
           {error && 'Error'}
           <ModalContainer>
             <Modal>
-              <CloseImage src={Close} onClick={close}></CloseImage>
+              <CloseImage src={Close} onClick={close} />
               <Title>{`Delete Client <${client}>?`}</Title>
               <Button onClick={handleonClickClient}>Delete</Button>
             </Modal>
@@ -140,7 +140,7 @@ export default function DeleteModal({
           {errorStorage && 'Error'}
           <ModalContainer>
             <Modal>
-              <CloseImage src={Close} onClick={close}></CloseImage>
+              <CloseImage src={Close} onClick={close} />
               <Title>{`Delete Client <${storage}>?`}</Title>
               <Button onClick={handleOnClickStorage}>Delete</Button>
             </Modal>

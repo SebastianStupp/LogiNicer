@@ -6,6 +6,4 @@ export default {
 
 const listCardExmaples = ['Example'];
 
-export const DefaultListCard = () => (
-  <ListCard content={listCardExmaples}></ListCard>
-);
+export const DefaultListCard = () => <ListCard content={listCardExmaples} />;

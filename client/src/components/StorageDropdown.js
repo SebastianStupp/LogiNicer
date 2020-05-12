@@ -14,22 +14,21 @@ const DropdownSelection = styled.select`
   text-align-last: center;
 `;
 
-export default function StorageDropdown({ optionTitle, onContentChange }) {
-  const [dropdownValue, setDropdownValue] = React.useState('');
+export default function StorageDropdown({ optionTitle, onChange, value }) {
   const [{ storages, loading, error }] = useGetStorages();
 
-  React.useEffect(() => {
-    if (dropdownValue) {
-      onContentChange(dropdownValue);
-    }
-  }, [dropdownValue]);
-
   const handleChange = (event) => {
-    setDropdownValue(event.target.value);
+    const storage = storages.find(
+      (storage) => storage.storage === event.target.value
+    );
+    onChange(storage);
   };
 
   return (
-    <DropdownSelection value={dropdownValue} onChange={handleChange}>
+    <DropdownSelection
+      value={value ? value.storage : ''}
+      onChange={handleChange}
+    >
       <option value="" defaultValue disabled>
         {optionTitle}
       </option>
@@ -48,4 +47,6 @@ export default function StorageDropdown({ optionTitle, onContentChange }) {
 StorageDropdown.propTypes = {
   optionTitle: PropTypes.string,
   onContentChange: PropTypes.func,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  onChange: PropTypes.func,
 };

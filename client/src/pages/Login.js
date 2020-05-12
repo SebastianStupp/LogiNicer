@@ -45,7 +45,7 @@ export default function Login() {
       <LoginLogo src={LogoLarge} />
       <LoginTitle>LogiNicer</LoginTitle>
       <LoginInput placeholder="Username" />
-      <LoginInput placeholder="Password" />
+      <LoginInput placeholder="Password" type="password" />
       <Button onClick={HandleOnClick}>Login</Button>
       <Truck />
     </LoginContainer>

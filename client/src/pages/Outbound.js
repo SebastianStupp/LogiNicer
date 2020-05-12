@@ -98,7 +98,6 @@ export default function Outbound() {
   function handleOnClickOutbound() {
     setAmount(amount - outboundAmount);
     setConfirm(true);
-    setConfirm(false);
   }
 
   return (

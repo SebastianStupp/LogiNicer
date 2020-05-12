@@ -46,7 +46,6 @@ export default function StorageDropdown({ optionTitle, onChange, value }) {
 }
 StorageDropdown.propTypes = {
   optionTitle: PropTypes.string,
-  onContentChange: PropTypes.func,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   onChange: PropTypes.func,
 };

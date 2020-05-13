@@ -112,15 +112,15 @@ export default function ChangeModal({
   const location = useLocation();
   React.useEffect(() => {
     if (location.pathname === '/articlemaster') {
-      setModalTypeArticle(!modalTypeArticle);
+      setModalTypeArticle(true);
     }
     if (location.pathname === '/clientmaster') {
-      setModalTypeClient(!modalTypeClient);
+      setModalTypeClient(true);
     }
     if (location.pathname === '/storagesystem') {
-      setModalTypeStorage(!modalTypeStorage);
+      setModalTypeStorage(true);
     }
-  }, []);
+  }, [location, modalTypeArticle, modalTypeStorage, modalTypeClient]);
 
   async function handleOnClickClient() {
     await doPatchClient(clientId, clientName);

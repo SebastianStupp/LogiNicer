@@ -21,7 +21,7 @@ export default function ArticleDropdown({ optionTitle, onContentChange }) {
     if (dropdownValue) {
       onContentChange(dropdownValue);
     }
-  }, [dropdownValue]);
+  }, [dropdownValue, onContentChange]);
 
   const handleChange = (event) => {
     setDropdownValue(event.target.value);

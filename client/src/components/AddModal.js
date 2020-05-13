@@ -91,15 +91,15 @@ export default function AddModal({ close }) {
   const [modalTypeStorage, setModalTypeStorage] = React.useState(false);
   React.useEffect(() => {
     if (location.pathname === '/articlemaster') {
-      setModalTypeArticle(!modalTypeArticle);
+      setModalTypeArticle(true);
     }
     if (location.pathname === '/clientmaster') {
-      setModalTypeClient(!modalTypeClient);
+      setModalTypeClient(true);
     }
     if (location.pathname === '/storagesystem') {
-      setModalTypeStorage(!modalTypeStorage);
+      setModalTypeStorage(true);
     }
-  }, []);
+  }, [location, modalTypeArticle, modalTypeStorage, modalTypeClient]);
 
   async function handleClickClient() {
     await doPostClient(clientName);

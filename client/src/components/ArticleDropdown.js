@@ -14,21 +14,21 @@ const DropdownSelection = styled.select`
   text-align-last: center;
 `;
 
-export default function ArticleDropdown({ optionTitle, onContentChange }) {
-  const [dropdownValue, setDropdownValue] = React.useState('');
+export default function ArticleDropdown({ optionTitle, value, onChange }) {
   const [{ articles, loading, error }] = useGetArticles();
-  React.useEffect(() => {
-    if (dropdownValue) {
-      onContentChange(dropdownValue);
-    }
-  }, [dropdownValue]);
 
   const handleChange = (event) => {
-    setDropdownValue(event.target.value);
+    const article = articles.find(
+      (article) => article.articleNumber === event.target.value
+    );
+    onChange(article);
   };
 
   return (
-    <DropdownSelection value={dropdownValue} onChange={handleChange}>
+    <DropdownSelection
+      value={value ? value.articleNumber : ''}
+      onChange={handleChange}
+    >
       <option value="" defaultValue disabled>
         {optionTitle}
       </option>
@@ -40,11 +40,11 @@ export default function ArticleDropdown({ optionTitle, onContentChange }) {
             {data.articleNumber}
           </option>
         ))}
-      ;
     </DropdownSelection>
   );
 }
 ArticleDropdown.propTypes = {
   optionTitle: PropTypes.string,
-  onContentChange: PropTypes.func,
+  value: PropTypes.object,
+  onChange: PropTypes.func,
 };

@@ -12,7 +12,8 @@ function GlobalStyle() {
           box-sizing: border-box;
         }
         body {
-          height: 100vh;
+          height: 100%;
+          width: 100%;
           font-size: 16px;
           margin: 0;
           font-family: 'Roboto', sans-serif;

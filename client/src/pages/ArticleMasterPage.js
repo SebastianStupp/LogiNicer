@@ -7,6 +7,7 @@ import useGetArticles from '../hooks/useGetArticles';
 import DeleteModal from '../components/DeleteModal';
 import ChangeModal from '../components/ChangeModal';
 import AddModal from '../components/AddModal';
+import Loader from '../animations/Loader';
 
 const PageContainer = styled.div`
   display: flex;
@@ -100,7 +101,7 @@ export default function ArticleMasterPage() {
       ) : null}
       <Header type="menu" />
       <MainContainer>
-        {loading && 'loading'}
+        {loading && <Loader />}
         {error && 'Error'}
         {articles && (
           <ListCard

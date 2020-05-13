@@ -120,7 +120,7 @@ export default function AddModal({ close }) {
   }
   return (
     <>
-      {loadingArticle && 'Loading'}
+      {loadingArticle}
       {errorArticle && 'Error'}
       {modalTypeArticle ? (
         <ModalContainer>
@@ -128,8 +128,9 @@ export default function AddModal({ close }) {
             <CloseImage src={Close} onClick={close} />
             <Title>Create New Article</Title>
             <ClientDropdown
+              value={client}
               optionTitle="Please Select Client"
-              onContentChange={handleClientChange}
+              onChange={handleClientChange}
             />
             <InputContainer
               placeholder="Please Enter ArticleName"
@@ -182,7 +183,7 @@ export default function AddModal({ close }) {
           </Modal>
         </ModalContainer>
       ) : null}
-      {loadingStorage && 'loading...'}
+      {loadingStorage}
       {errorStorage && 'Error'}
       {modalTypeStorage ? (
         <ModalContainer>
@@ -191,7 +192,7 @@ export default function AddModal({ close }) {
             <Title>Create New Storage</Title>
             <InputContainer
               placeholder="Please Enter StorageLocation"
-              maxLength="6"
+              maxLength="8"
               onChange={(event) => {
                 setStorage(event.target.value);
               }}

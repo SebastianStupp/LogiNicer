@@ -14,21 +14,20 @@ const DropdownSelection = styled.select`
   text-align-last: center;
 `;
 
-export default function ClientDropdown({ optionTitle, onContentChange }) {
-  const [dropdownValue, setDropdownValue] = React.useState('');
+export default function ClientDropdown({ optionTitle, onChange, value }) {
   const [{ clients, loading, error }] = useGetClients();
-  React.useEffect(() => {
-    if (dropdownValue) {
-      onContentChange(dropdownValue);
-    }
-  }, [dropdownValue]);
 
   const handleChange = (event) => {
-    setDropdownValue(event.target.value);
+    const client = clients.find(
+      (client) => client.clientname === event.target.value
+    );
+    onChange(client);
   };
-
   return (
-    <DropdownSelection value={dropdownValue} onChange={handleChange}>
+    <DropdownSelection
+      value={value ? value.clientname : ''}
+      onChange={handleChange}
+    >
       <option value="" defaultValue disabled>
         {optionTitle}
       </option>
@@ -46,5 +45,6 @@ export default function ClientDropdown({ optionTitle, onContentChange }) {
 }
 ClientDropdown.propTypes = {
   optionTitle: PropTypes.string,
-  onContentChange: PropTypes.func,
+  onChange: PropTypes.func,
+  value: PropTypes.object,
 };

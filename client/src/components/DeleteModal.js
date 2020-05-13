@@ -108,7 +108,7 @@ export default function DeleteModal({
     <>
       {modalTypeArticle ? (
         <>
-          {loadingArticle && 'loading...'}
+          {loadingArticle}
           {errorArticle && 'Error'}
           <ModalContainer>
             <Modal>
@@ -122,7 +122,7 @@ export default function DeleteModal({
 
       {modalTypeClient ? (
         <>
-          {loading && 'loading...'}
+          {loading}
           {error && 'Error'}
           <ModalContainer>
             <Modal>
@@ -136,7 +136,7 @@ export default function DeleteModal({
 
       {modalTypeStorage ? (
         <>
-          {loadingStorage && 'loading...'}
+          {loadingStorage}
           {errorStorage && 'Error'}
           <ModalContainer>
             <Modal>

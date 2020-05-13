@@ -7,6 +7,7 @@ import useGetStorages from '../hooks/useGetStorages';
 import DeleteModal from '../components/DeleteModal';
 import ChangeModal from '../components/ChangeModal';
 import AddModal from '../components/AddModal';
+import Loader from '../animations/Loader';
 
 const PageContainer = styled.div`
   display: flex;
@@ -81,7 +82,7 @@ export default function ClientMasterPage() {
       ) : null}
       <Header type="menu" />
       <MainContainer>
-        {loading && 'loading'}
+        {loading && <Loader />}
         {error && 'Error'}
         {storages && (
           <ListCard

@@ -144,7 +144,7 @@ export default function ChangeModal({
     <>
       {modalTypeArticle ? (
         <>
-          {loadingArticle && 'loading...'}
+          {loadingArticle}
           {errorArticle && 'Error'}
           <ModalContainer>
             <Modal>
@@ -195,7 +195,7 @@ export default function ChangeModal({
 
       {modalTypeClient ? (
         <>
-          {loading && 'loading...'}
+          {loading}
           {error && 'Error'}
           <ModalContainer>
             <Modal>

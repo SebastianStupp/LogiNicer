@@ -8,11 +8,11 @@ router.get('/', (request, response) => {
 });
 
 router.post('/', (request, response) => {
-  const { articleNumber, client, bbd, pzn, ean, time } = request.body;
+  const { articleNumber, clientId, bbd, pzn, ean, time } = request.body;
 
   const newArticle = new Article({
     articleNumber,
-    client,
+    clientId,
     bbd,
     pzn,
     ean,
@@ -31,7 +31,7 @@ router.patch('/:id', (request, response) => {
     {
       $set: {
         articleNumber: request.body.articleNumber,
-        client: request.body.client,
+        clientId: request.body.client,
         bbd: request.body.bbd,
         pzn: request.body.pzn,
         ean: request.body.ean,

@@ -111,12 +111,13 @@ export default function AddModal({ close }) {
   }
 
   async function handleClickArticle() {
-    await doPostArticle(articleNumber, client, bbd, pzn, ean);
+    await doPostArticle(articleNumber, client._id, bbd, pzn, ean);
     close();
   }
 
   function handleClientChange(client) {
     setClient(client);
+    console.log(client);
   }
   return (
     <>

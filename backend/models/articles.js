@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const articleSchema = new Schema({
   articleNumber: { type: String, required: true },
-  client: { type: String, required: true },
+  clientId: { type: String, required: true },
   bbd: Boolean,
   pzn: Boolean,
   ean: Boolean,

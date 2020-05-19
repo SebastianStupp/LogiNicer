@@ -4,13 +4,13 @@ export async function getArticles() {
   return articles;
 }
 
-export async function postArticle(articleNumber, client, bbd, pzn, ean) {
+export async function postArticle(articleNumber, clientId, bbd, pzn, ean) {
   const response = await fetch('/api/articles', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ articleNumber, client, bbd, pzn, ean }),
+    body: JSON.stringify({ articleNumber, clientId, bbd, pzn, ean }),
   });
   const createdArticle = await response.json();
   return createdArticle;

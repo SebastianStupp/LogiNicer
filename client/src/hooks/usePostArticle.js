@@ -6,9 +6,9 @@ export default function usePostClient() {
   const [errorArticle, setError] = React.useState(false);
   const [loadingArticle, setLoadingArticle] = React.useState(true);
 
-  async function doPostArticle(articleNumber, client, bbd, pzn, ean) {
+  async function doPostArticle(articleNumber, clientId, bbd, pzn, ean) {
     try {
-      const article = await postArticle(articleNumber, client, bbd, pzn, ean);
+      const article = await postArticle(articleNumber, clientId, bbd, pzn, ean);
       setArticle(article);
     } catch (errormsg) {
       setError(true);
